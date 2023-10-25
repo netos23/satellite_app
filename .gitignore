@@ -1,0 +1,97 @@
+*.iml
+*.class
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+GeneratedPluginRegistrant.java
+/vlc_log.txt
+/desktop_log.txt
+
+.dart_tool/
+.flutter-plugins
+.pub/
+.history/
+.packages
+/../.idea
+flutter_export_environment.sh
+.fvm/
+
+
+# built application files
+*.apk
+*.ap_
+
+# lint folder
+lint
+
+# files for the dex VM
+*.dex
+
+# Java class files
+
+# generated files
+bin/
+gen/
+classes/
+gen-external-apklibs/
+captures/
+
+# maven output folder
+target
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Eclipse project files
+.classpath
+.project
+.metadata
+.settings
+
+# IntelliJ files
+.idea
+.idea/
+
+# OSX files
+
+# Windows files
+Thumbs.db
+
+# vi swap files
+*.swp
+
+# backup files
+*.bak
+
+# gradle directory
+build/
+
+*.log
+
+# .vscode/
+# pubspec.lock
+/android/fastlane/report.xml
+
+/macos/Pods/
+/macos/Runner.xcworkspace/xcuserdata/
+/macos/Runner.xcodeproj/xcuserdata/
+/macos/Flutter/ephemeral/FlutterMacOS.framework/Versions/A/_CodeSignature/
+/macos/Pods/Pods.xcodeproj/xcuserdata/
+/macos/Flutter/ephemeral/
+
+/lib/generated_plugin_registrant.dart
+
+.flutter-plugins-dependencies
+**/ios/Flutter/.last_build_id
+/plugins/**/Generated.xcconfig
+
+application_bundle/shared/local_settings.json
+application_bundle/shared/.computer_name
+ios/Runner.app.dSYM.zip
+ios/Runner.ipa
+ios/fastlane/report.xml
+/android/app/release/
+pubspec_overrides.yaml
