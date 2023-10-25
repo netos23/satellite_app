@@ -90,10 +90,10 @@ class _$GeoDataCopyWithImpl<$Res, $Val extends GeoData>
 }
 
 /// @nodoc
-abstract class _$$_GeoDataCopyWith<$Res> implements $GeoDataCopyWith<$Res> {
-  factory _$$_GeoDataCopyWith(
-          _$_GeoData value, $Res Function(_$_GeoData) then) =
-      __$$_GeoDataCopyWithImpl<$Res>;
+abstract class _$$GeoDataImplCopyWith<$Res> implements $GeoDataCopyWith<$Res> {
+  factory _$$GeoDataImplCopyWith(
+          _$GeoDataImpl value, $Res Function(_$GeoDataImpl) then) =
+      __$$GeoDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,10 +105,11 @@ abstract class _$$_GeoDataCopyWith<$Res> implements $GeoDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GeoDataCopyWithImpl<$Res>
-    extends _$GeoDataCopyWithImpl<$Res, _$_GeoData>
-    implements _$$_GeoDataCopyWith<$Res> {
-  __$$_GeoDataCopyWithImpl(_$_GeoData _value, $Res Function(_$_GeoData) _then)
+class __$$GeoDataImplCopyWithImpl<$Res>
+    extends _$GeoDataCopyWithImpl<$Res, _$GeoDataImpl>
+    implements _$$GeoDataImplCopyWith<$Res> {
+  __$$GeoDataImplCopyWithImpl(
+      _$GeoDataImpl _value, $Res Function(_$GeoDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +121,7 @@ class __$$_GeoDataCopyWithImpl<$Res>
     Object? lat = null,
     Object? lon = null,
   }) {
-    return _then(_$_GeoData(
+    return _then(_$GeoDataImpl(
       cityFias: null == cityFias
           ? _value.cityFias
           : cityFias // ignore: cast_nullable_to_non_nullable
@@ -148,16 +149,16 @@ class __$$_GeoDataCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$_GeoData implements _GeoData {
-  const _$_GeoData(
+class _$GeoDataImpl implements _GeoData {
+  const _$GeoDataImpl(
       {@JsonKey(name: 'city_fias') required this.cityFias,
       required this.name,
       required this.fullName,
       required this.lat,
       required this.lon});
 
-  factory _$_GeoData.fromJson(Map<String, dynamic> json) =>
-      _$$_GeoDataFromJson(json);
+  factory _$GeoDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GeoDataImplFromJson(json);
 
   @override
   @JsonKey(name: 'city_fias')
@@ -180,7 +181,7 @@ class _$_GeoData implements _GeoData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GeoData &&
+            other is _$GeoDataImpl &&
             (identical(other.cityFias, cityFias) ||
                 other.cityFias == cityFias) &&
             (identical(other.name, name) || other.name == name) &&
@@ -198,12 +199,12 @@ class _$_GeoData implements _GeoData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeoDataCopyWith<_$_GeoData> get copyWith =>
-      __$$_GeoDataCopyWithImpl<_$_GeoData>(this, _$identity);
+  _$$GeoDataImplCopyWith<_$GeoDataImpl> get copyWith =>
+      __$$GeoDataImplCopyWithImpl<_$GeoDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GeoDataToJson(
+    return _$$GeoDataImplToJson(
       this,
     );
   }
@@ -215,9 +216,9 @@ abstract class _GeoData implements GeoData {
       required final String name,
       required final String fullName,
       required final String lat,
-      required final String lon}) = _$_GeoData;
+      required final String lon}) = _$GeoDataImpl;
 
-  factory _GeoData.fromJson(Map<String, dynamic> json) = _$_GeoData.fromJson;
+  factory _GeoData.fromJson(Map<String, dynamic> json) = _$GeoDataImpl.fromJson;
 
   @override
   @JsonKey(name: 'city_fias')
@@ -232,6 +233,6 @@ abstract class _GeoData implements GeoData {
   String get lon;
   @override
   @JsonKey(ignore: true)
-  _$$_GeoDataCopyWith<_$_GeoData> get copyWith =>
+  _$$GeoDataImplCopyWith<_$GeoDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

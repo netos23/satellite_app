@@ -6,7 +6,8 @@ part of 'geo_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GeoData _$$_GeoDataFromJson(Map<String, dynamic> json) => _$_GeoData(
+_$GeoDataImpl _$$GeoDataImplFromJson(Map<String, dynamic> json) =>
+    _$GeoDataImpl(
       cityFias: json['city_fias'] as String,
       name: json['name'] as String,
       fullName: json['fullName'] as String,
@@ -14,7 +15,7 @@ _$_GeoData _$$_GeoDataFromJson(Map<String, dynamic> json) => _$_GeoData(
       lon: json['lon'] as String,
     );
 
-Map<String, dynamic> _$$_GeoDataToJson(_$_GeoData instance) =>
+Map<String, dynamic> _$$GeoDataImplToJson(_$GeoDataImpl instance) =>
     <String, dynamic>{
       'city_fias': instance.cityFias,
       'name': instance.name,

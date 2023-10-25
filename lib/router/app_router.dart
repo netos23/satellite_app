@@ -11,33 +11,33 @@
 //   @override
 //   List<AutoRoute> get routes => [
 //         AutoRoute(page: WebViewerRoute.page),
-//         AutoRoute(
-//           page: HomeRoute.page,
-//           initial: true,
-//           children: [
-//             AutoRoute(
-//               page: ShowCaseTab.page,
-//               children: [
-//                 AutoRoute(
-//                   page: ShowCaseRoute.page,
-//                   initial: true,
-//                 ),
-//               ],
-//             ),
-//             AutoRoute(
-//               page: UserProfileTab.page,
-//               children: [
-//                 AutoRoute(
-//                   page: ProfileRoute.page,
-//                   initial: true,
-//                 ),
-//                 AutoRoute(
-//                   page: EditProfileRoute.page,
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
+//         // AutoRoute(
+//         //   page: HomeRoute.page,
+//         //   initial: true,
+//         //   children: [
+//         //     AutoRoute(
+//         //       page: ShowCaseTab.page,
+//         //       children: [
+//         //         AutoRoute(
+//         //           page: ShowCaseRoute.page,
+//         //           initial: true,
+//         //         ),
+//         //       ],
+//         //     ),
+//         //     AutoRoute(
+//         //       page: UserProfileTab.page,
+//         //       children: [
+//         //         AutoRoute(
+//         //           page: ProfileRoute.page,
+//         //           initial: true,
+//         //         ),
+//         //         AutoRoute(
+//         //           page: EditProfileRoute.page,
+//         //         ),
+//         //       ],
+//         //     ),
+//         //   ],
+//         // ),
 //       ];
 // }
 //
