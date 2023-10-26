@@ -4,33 +4,40 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/pages/components/loading_indicator.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/components/theme_switch.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_wm.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_wm.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/util/snack_bar_util.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/util/wm_extensions.dart" afterDir="false" />
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="routing and pages">
+      <change afterPath="$PROJECT_DIR$/assets/images/basket.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/basket_t.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/calendar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/farmer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/girl.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/man.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/order_history.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/products.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/satellite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/telegram_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/svg/size_done.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_wm.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/internal/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/internal/app_components.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app_components.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/internal/color_schemes.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/color_schemes.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,18 +72,21 @@
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/lib/pages/components",
+    "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app",
     "settings.editor.selected.configurable": "AndroidSdkUpdater",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/lib/pages" />
       <recent name="$PROJECT_DIR$/lib/pages/components" />
       <recent name="$PROJECT_DIR$/lib/util" />
-      <recent name="$PROJECT_DIR$/lib/pages" />
       <recent name="$PROJECT_DIR$/lib/internal" />
-      <recent name="$PROJECT_DIR$/lib/pages/farm_show_case_page" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
     </key>
   </component>
   <component name="RunManager">
@@ -94,6 +104,14 @@
       <option name="presentableId" value="Default" />
       <updated>1698267025621</updated>
     </task>
+    <task id="LOCAL-00001" summary="routing and pages">
+      <created>1698331478919</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698331478919</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,5 +124,20 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="routing and pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="routing and pages" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

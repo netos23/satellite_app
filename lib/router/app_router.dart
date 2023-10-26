@@ -3,13 +3,22 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:satellite_app/pages/auth_code_page/auth_code_page_widget.dart';
+import 'package:satellite_app/pages/auth_code_page/auth_code_page_wm.dart';
+import 'package:satellite_app/pages/auth_page/auth_page_widget.dart';
+import 'package:satellite_app/pages/auth_page/auth_page_wm.dart';
+import 'package:satellite_app/pages/edit_profile_page/edit_profile_page_widget.dart';
+import 'package:satellite_app/pages/edit_profile_page/edit_profile_page_wm.dart';
 import 'package:satellite_app/pages/home_page/home_page_widget.dart';
 import 'package:satellite_app/pages/home_page/home_page_wm.dart';
 import 'package:satellite_app/pages/profile_page/profile_page.dart';
+import 'package:satellite_app/pages/register_page/register_page_widget.dart';
+import 'package:satellite_app/pages/register_page/register_page_wm.dart';
 import 'package:satellite_app/pages/show_case_page/show_case_page_wm.dart';
 import 'package:satellite_app/pages/web_view/web_view_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../domain/models/profile.dart';
 import '../pages/show_case_page/show_case_page_widget.dart';
 
 part 'app_router.gr.dart';
@@ -19,9 +28,9 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: WebViewerRoute.page),
-        //AutoRoute(page: AuthRoute.page),
-        //AutoRoute(page: AuthCodeRoute.page),
-        //AutoRoute(page: RegisterRoute.page),
+        AutoRoute(page: AuthRoute.page),
+        AutoRoute(page: AuthCodeRoute.page),
+        AutoRoute(page: RegisterRoute.page),
         AutoRoute(
           page: HomeRoute.page,
           initial: true,
@@ -42,12 +51,10 @@ class AppRouter extends _$AppRouter {
                   page: ProfileRoute.page,
                   initial: true,
                 ),
-                // AutoRoute(
-                //   page: EditProfileRoute.page,
-                // ),
-                // AutoRoute(
-                //   page: RegisterBrandRoute.page,
-                // ),
+                AutoRoute(
+                  page: EditProfileRoute.page,
+                ),
+
               ],
             ),
 

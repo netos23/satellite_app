@@ -37,16 +37,17 @@ class _MobilePage extends StatelessWidget {
       bottomNavigationBuilder: (_, tabsRouter) {
         return NavigationBar(
           selectedIndex: tabsRouter.activeIndex,
-          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           onDestinationSelected: tabsRouter.setActiveIndex,
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+          animationDuration: const Duration(milliseconds: 300),
           destinations: const [
             NavigationDestination(
-              label: 'Блог',
-              icon: Icon(Icons.home_outlined),
+              label: 'Статьи',
+              icon: Icon(Icons.photo_outlined),
             ),
             // NavigationDestination(
             //   label: 'Заказ',
-            //   icon: Icon(Icons.apps_rounded),
+            //    icon: Icon(Icons.map),
             // ),
             NavigationDestination(
               label: 'Профиль',
@@ -104,15 +105,15 @@ class _WebPage extends StatelessWidget {
                   child: Row(
                     children: [
                       NavigationRail(
-                        labelType: NavigationRailLabelType.selected,
+                        labelType: NavigationRailLabelType.all,
                         destinations: const [
                           NavigationRailDestination(
-                            label: Text('Блог'),
-                            icon: Icon(Icons.home_outlined),
+                            label: Text('Статьи'),
+                            icon: Icon(Icons.photo_outlined),
                           ),
                           // NavigationRailDestination(
                           //   label: Text('Заказ'),
-                          //   icon: Icon(Icons.apps_rounded),
+                          //   icon: Icon(Icons.map),
                           // ),
                           NavigationRailDestination(
                             label: Text('Профиль'),

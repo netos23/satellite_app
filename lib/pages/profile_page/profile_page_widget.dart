@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/pages/components/theme_switch.dart';
+import 'package:satellite_app/router/app_router.dart';
 
 import 'profile_page_wm.dart';
 
@@ -59,16 +60,20 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                       //   onTap: wm.onBasketTap,
                       // ),
                       // ProfileCard(
-                      //   title: 'Блог',
+                      //   title: 'Статьи',
                       //   image: 'assets/images/farmer.png',
                       //   onTap: wm.onFarmShowCaseTap,
                       // ),
-                      ProfileCard(
-                        title: 'Календарь',
-                        image: 'assets/images/calendar.png',
-                        onTap: wm.onCalendarTap,
-                      ),
                       // ProfileCard(
+                      //   title: 'Календарь',
+                      //   image: 'assets/images/calendar.png',
+                      //   onTap: wm.onCalendarTap,
+                      // ),
+                      // ProfileCard(
+                      //   title: 'Мои заказы',
+                      //   image: 'assets/images/order_history.png',
+                      //   onTap: wm.onOrderHistoryTap,
+                      // ),ProfileCard(
                       //   title: 'Мои заказы',
                       //   image: 'assets/images/order_history.png',
                       //   onTap: wm.onOrderHistoryTap,
@@ -78,21 +83,18 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                   SliverList(
                     delegate: SliverChildListDelegate(
                       [
-                        Visibility(
-                          visible: !isLogin,
-                          child: Expanded(
-                            child: Text(
-                              'Необходима авторизация',
-                              textAlign: TextAlign.center,
-                              style: textTheme.bodyLarge?.copyWith(
-                                color: colorTheme.onBackground,
-                              ),
+                        if (!isLogin)
+                        Expanded(
+                          child: Text(
+                            'Необходима авторизация',
+                            textAlign: TextAlign.center,
+                            style: textTheme.bodyLarge?.copyWith(
+                              color: colorTheme.onBackground,
                             ),
                           ),
                         ),
-                        Visibility(
-                          visible: isLogin,
-                          child: Container(
+                        if (isLogin)
+                          Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             height: 57,
                             child: Card(
@@ -113,10 +115,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                                         'Получать уведомления в Телеграм',
                                         style: theme.textTheme.bodyMedium
                                             ?.copyWith(
-                                                color:
-                                                    theme.colorScheme.onSurface,
-                                                overflow:
-                                                    TextOverflow.ellipsis),
+                                            color:
+                                            theme.colorScheme.onSurface,
+                                            overflow:
+                                            TextOverflow.ellipsis),
                                       ),
                                     )
                                   ],
@@ -124,7 +126,6 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                               ),
                             ),
                           ),
-                        ),
                         // Visibility(
                         //   visible: isFarmer && hasNotBrand,
                         //   child: Container(
@@ -155,10 +156,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                         //     ),
                         //   ),
                         // ),
+                        const Spacer(),
                         Center(
                           child: Container(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             height: 50,
                             child: FilledButton(
                               style: theme.filledButtonTheme.style?.copyWith(
@@ -168,7 +169,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                               ),
                               onPressed: () {
                                 if (!isLogin) {
-                                  //context.router.push(AuthRoute());
+                                  context.router.push(AuthRoute());
                                 } else {
                                   wm.profileUseCase.logout();
                                 }
@@ -181,6 +182,23 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                             ),
                           ),
                         ),
+                        // const SizedBox(
+                        //   height: 50,
+                        // ),
+                        // Center(
+                        //     child: ElevatedButton(
+                        //         onPressed: () {},
+                        //         child: const Text('Elevated'))),
+                        // Center(
+                        //
+                        //     child: OutlinedButton(
+                        //
+                        //         onPressed: () {},
+                        //         child: const Text('Outlined'))),
+                        // Center(
+                        //
+                        //     child: FilledButton(
+                        //         onPressed: () {}, child: const Text('Filled'))),
                       ],
                     ),
                   ),
@@ -225,7 +243,7 @@ class SliverProfileGrid extends StatelessWidget {
                 childAspectRatio: 1,
               )
             : const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+                crossAxisCount: 1,
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
                 childAspectRatio: 1,
@@ -259,15 +277,15 @@ class ProfileCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Stack(children: [
-          Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(32, 20, 32, 32),
-              child: Image.asset(
-                image,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
+          // Positioned.fill(
+          //   child: Padding(
+          //     padding: const EdgeInsets.fromLTRB(32, 20, 32, 32),
+          //     child: Image.asset(
+          //       image,
+          //       fit: BoxFit.contain,
+          //     ),
+          //   ),
+          // ),
           Positioned(
             left: 16,
             right: 16,

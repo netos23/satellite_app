@@ -15,6 +15,40 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AuthCodeRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthCodeRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AuthCodePageWidget(
+          key: args.key,
+          email: args.email,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    AuthRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<AuthRouteArgs>(orElse: () => const AuthRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AuthPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    EditProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<EditProfileRouteArgs>(
+          orElse: () => const EditProfileRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EditProfilePageWidget(
+          profile: args.profile,
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
     HomeRoute.name: (routeData) {
       final args =
           routeData.argsAs<HomeRouteArgs>(orElse: () => const HomeRouteArgs());
@@ -32,6 +66,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ProfilePageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    RegisterRoute.name: (routeData) {
+      final args = routeData.argsAs<RegisterRouteArgs>(
+          orElse: () => const RegisterRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RegisterPageWidget(
+          email: args.email,
           key: args.key,
           wmFactory: args.wmFactory,
         ),
@@ -88,6 +134,138 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AuthCodePageWidget]
+class AuthCodeRoute extends PageRouteInfo<AuthCodeRouteArgs> {
+  AuthCodeRoute({
+    Key? key,
+    required String email,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultAuthCodePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AuthCodeRoute.name,
+          args: AuthCodeRouteArgs(
+            key: key,
+            email: email,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthCodeRoute';
+
+  static const PageInfo<AuthCodeRouteArgs> page =
+      PageInfo<AuthCodeRouteArgs>(name);
+}
+
+class AuthCodeRouteArgs {
+  const AuthCodeRouteArgs({
+    this.key,
+    required this.email,
+    this.wmFactory = defaultAuthCodePageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final String email;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'AuthCodeRouteArgs{key: $key, email: $email, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [AuthPageWidget]
+class AuthRoute extends PageRouteInfo<AuthRouteArgs> {
+  AuthRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultAuthPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AuthRoute.name,
+          args: AuthRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRoute';
+
+  static const PageInfo<AuthRouteArgs> page = PageInfo<AuthRouteArgs>(name);
+}
+
+class AuthRouteArgs {
+  const AuthRouteArgs({
+    this.key,
+    this.wmFactory = defaultAuthPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'AuthRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [EditProfilePageWidget]
+class EditProfileRoute extends PageRouteInfo<EditProfileRouteArgs> {
+  EditProfileRoute({
+    Profile? profile,
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultEditProfilePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EditProfileRoute.name,
+          args: EditProfileRouteArgs(
+            profile: profile,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EditProfileRoute';
+
+  static const PageInfo<EditProfileRouteArgs> page =
+      PageInfo<EditProfileRouteArgs>(name);
+}
+
+class EditProfileRouteArgs {
+  const EditProfileRouteArgs({
+    this.profile,
+    this.key,
+    this.wmFactory = defaultEditProfilePageWidgetModelFactory,
+  });
+
+  final Profile? profile;
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'EditProfileRouteArgs{profile: $profile, key: $key, wmFactory: $wmFactory}';
+  }
 }
 
 /// generated route for
@@ -168,6 +346,52 @@ class ProfileRouteArgs {
   @override
   String toString() {
     return 'ProfileRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [RegisterPageWidget]
+class RegisterRoute extends PageRouteInfo<RegisterRouteArgs> {
+  RegisterRoute({
+    String? email,
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultRegisterPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RegisterRoute.name,
+          args: RegisterRouteArgs(
+            email: email,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RegisterRoute';
+
+  static const PageInfo<RegisterRouteArgs> page =
+      PageInfo<RegisterRouteArgs>(name);
+}
+
+class RegisterRouteArgs {
+  const RegisterRouteArgs({
+    this.email,
+    this.key,
+    this.wmFactory = defaultRegisterPageWidgetModelFactory,
+  });
+
+  final String? email;
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'RegisterRouteArgs{email: $email, key: $key, wmFactory: $wmFactory}';
   }
 }
 

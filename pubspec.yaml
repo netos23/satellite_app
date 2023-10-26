@@ -60,3 +60,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/images/
+    - assets/svg/
+    - assets/images/products.png
+    - assets/images/farmer.png
