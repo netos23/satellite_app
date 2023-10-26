@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:satellite_app/router/app_router.dart';
 
 import 'color_schemes.g.dart';
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
 
-  //final _appRouter = AppRouter();
+  final _appRouter = AppRouter();
 
 
   @override
@@ -40,16 +41,16 @@ class App extends StatelessWidget {
       ),
       highContrastTheme: ThemeData(
         useMaterial3: true,
-        colorScheme: hightColorScheme,
+        //colorScheme: hightColorScheme,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
       ),
       highContrastDarkTheme: ThemeData(
         useMaterial3: true,
-        colorScheme: hightColorScheme,
+        //colorScheme: hightColorScheme,
         textTheme: GoogleFonts.jetBrainsMonoTextTheme(),
       ),
       themeMode: themeMode.value,
-     // routerConfig: _appRouter.config(),
+      routerConfig: _appRouter.config(),
     );
   }
 }

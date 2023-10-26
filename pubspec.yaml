@@ -16,7 +16,10 @@ dependencies:
   freezed_annotation: ^2.4.1
   google_fonts: ^6.1.0
   dio: ^5.3.3
-  auto_route: ^7.2.0
+  auto_route: ^7.8.4
+  elementary: ^2.0.0
+  smooth_page_indicator: ^1.1.0
+  cached_network_image: ^3.2.3
   cupertino_icons: ^1.0.6
   json_annotation: ^4.8.1
   pinput: ^3.0.1
@@ -30,6 +33,9 @@ dependencies:
   url_launcher: ^6.1.14
   decimal: ^2.3.3
   webview_flutter: ^4.4.1
+  google_maps_flutter: ^2.5.0
+  google_maps_cluster_manager: ^3.0.0+1
+  flutter_markdown: ^0.6.14
   dadata_suggestions:
     git:
       url: https://github.com/AurelVU/dadata_suggestions.git
@@ -46,6 +52,8 @@ dev_dependencies:
   retrofit_generator: ^6.0.0+3
   flutter_lints: ^2.0.0
   build_runner: ^2.4.6
+  auto_route_generator: ^7.3.2
+
 
 flutter:
   uses-material-design: true

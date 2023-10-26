@@ -4,16 +4,55 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="" />
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/pages/components/loading_indicator.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/components/theme_switch.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/snack_bar_util.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/util/wm_extensions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/app_components.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app_components.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/color_schemes.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/color_schemes.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2XGt11nrx9qXCn9tTk9n5gbcQve" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -25,10 +64,27 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/lib/pages/components",
     "settings.editor.selected.configurable": "AndroidSdkUpdater",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/pages/components" />
+      <recent name="$PROJECT_DIR$/lib/util" />
+      <recent name="$PROJECT_DIR$/lib/pages" />
+      <recent name="$PROJECT_DIR$/lib/internal" />
+      <recent name="$PROJECT_DIR$/lib/pages/farm_show_case_page" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

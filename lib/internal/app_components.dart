@@ -1,11 +1,13 @@
 import 'package:dadata_suggestions/dadata_suggestions.dart';
 import 'package:dio/dio.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:satellite_app/data/interseptor.dart';
+import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/data/repository/dadata_repository.dart';
 import 'package:satellite_app/data/repository/token_ropository.dart';
 import 'package:satellite_app/data/service/auth_service.dart';
 import 'package:satellite_app/data/service/banner_service.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 
 const timeout = Duration(seconds: 30);
 
@@ -22,9 +24,11 @@ class AppComponents {
   late final AuthService authService = AuthService(dio);
   late final BannerService bannerService = BannerService(dio);
   late final GeolocationDadataRepository dadataRepository =
-  GeolocationDadataRepository(
+      GeolocationDadataRepository(
     DadataSuggestions(tokenDaData),
   );
+  late final ProfileUseCase profileUseCase =
+      ProfileUseCase(tokenRepository, AuthRepository(authService));
 
   Future<void> init() async {
     dio.options
