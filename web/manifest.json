@@ -1,6 +1,6 @@
 {
-    "name": "dron_delivery_app",
-    "short_name": "dron_delivery_app",
+    "name": "satellite_app",
+    "short_name": "satellite_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

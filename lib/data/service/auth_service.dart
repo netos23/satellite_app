@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:dron_delivery_app/domain/entity/auth/auth_email_part1_request.dart';
-import 'package:dron_delivery_app/domain/entity/auth/auth_email_part2_request.dart';
-import 'package:dron_delivery_app/domain/entity/auth/auth_email_part2_response.dart';
-import 'package:dron_delivery_app/domain/models/profile.dart';
-import 'package:dron_delivery_app/domain/url/auth_url.dart';
+import 'package:satellite_app/domain/entity/auth/auth_email_part1_request.dart';
+import 'package:satellite_app/domain/entity/auth/auth_email_part2_request.dart';
+import 'package:satellite_app/domain/entity/auth/auth_email_part2_response.dart';
+import 'package:satellite_app/domain/models/profile.dart';
+import 'package:satellite_app/domain/url/auth_url.dart';
 import 'package:retrofit/http.dart';
 
 part 'auth_service.g.dart';

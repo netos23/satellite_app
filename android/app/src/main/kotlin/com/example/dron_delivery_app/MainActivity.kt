@@ -1,4 +1,4 @@
-package com.example.dron_delivery_app
+package com.example.satellite_app
 
 import io.flutter.embedding.android.FlutterActivity
 

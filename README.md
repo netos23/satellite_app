@@ -1,6 +1,6 @@
-# dron_delivery_app
+# satellite_app
 
-A new Flutter project.
+A TeamForWin Flutter project for profession-it.  .
 
 ## Getting Started
 

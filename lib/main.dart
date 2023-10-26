@@ -1,6 +1,6 @@
-import 'package:dron_delivery_app/internal/app.dart';
-import 'package:dron_delivery_app/internal/app_components.dart';
-import 'package:dron_delivery_app/internal/app_dependency.dart';
+import 'package:satellite_app/internal/app.dart';
+import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/internal/app_dependency.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
