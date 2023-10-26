@@ -9,6 +9,7 @@ class App extends StatelessWidget {
 
   //final _appRouter = AppRouter();
 
+
   @override
   Widget build(BuildContext context) {
     final themeMode = context.watch<ValueNotifier<ThemeMode>>();
