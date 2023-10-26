@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:dron_delivery_app/domain/entity/models/banner.dart';
+import 'package:dron_delivery_app/domain/models/banner.dart';
 import 'package:dron_delivery_app/domain/url/banner_url.dart';
 import 'package:retrofit/http.dart';
 
