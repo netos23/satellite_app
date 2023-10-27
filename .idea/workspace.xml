@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="">
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="feature(loading for satellites)">
+      <change afterPath="$PROJECT_DIR$/lib/data/service/order_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/order/order.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/order/tarif.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/repository/geozones_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/repository/geozones_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/data/service/geozones_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/data/service/geozones_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/app_components.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app_components.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -144,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698407853246</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feature(loading for satellites)">
+      <created>1698414251860</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1698414251861</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,7 +188,8 @@
     <MESSAGE value="fix(ordering screen view)" />
     <MESSAGE value="fix(auth screen update)" />
     <MESSAGE value="feature(add map screen)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature(add map screen)" />
+    <MESSAGE value="feature(loading for satellites)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature(loading for satellites)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

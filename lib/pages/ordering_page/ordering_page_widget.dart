@@ -144,23 +144,11 @@ class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
                 const SizedBox(
                   height: 4,
                 ),
-                const Center(child: CircularProgressIndicator()),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Center(child: CircularProgressIndicator()),
-                const SizedBox(
-                  height: 4,
-                ),
-                const Center(child: CircularProgressIndicator()),
-                const SizedBox(
-                  height: 16,
-                ),
                 Text('Выбор тарифа', style: theme.textTheme.bodyLarge,),
                 const SizedBox(
                   height: 4,
                 ),
-                 Row(
+                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(child: CircularProgressIndicator()),

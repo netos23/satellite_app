@@ -10,8 +10,10 @@ import 'package:satellite_app/data/repository/token_ropository.dart';
 import 'package:satellite_app/data/service/auth_service.dart';
 import 'package:satellite_app/data/service/banner_service.dart';
 import 'package:satellite_app/data/service/geozones_service.dart';
+import 'package:satellite_app/data/service/order_service.dart';
 import 'package:satellite_app/data/service/satellite_service.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
+import 'package:satellite_app/router/app_router.dart';
 
 const timeout = Duration(seconds: 30);
 
@@ -42,6 +44,7 @@ class AppComponents {
   late final SatelliteRepository satelliteRepository =
       SatelliteRepository(satelliteService);
   late final GeozonesRepository geozonesRepository = GeozonesRepository(geozonesService);
+  late final OrderService orderService = OrderService(dio);
 
   Future<void> init() async {
     dio.options
