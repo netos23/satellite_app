@@ -7,29 +7,29 @@ part of 'order.dart';
 // **************************************************************************
 
 _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
-      id: json['id'] as int,
       dateBegin: json['date_begin'] as String,
       dateEnd: json['date_end'] as String,
-      price: (json['price'] as num).toDouble(),
-      user: json['user'] as int,
+      user: json['user'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
       satellites:
           (json['satellites'] as List<dynamic>).map((e) => e as int).toList(),
-      createdAt: json['created_at'] as String?,
       status: json['status'] as int?,
-      geozone: json['geozone'] as int?,
-      tarif: json['tarif'] as int?,
+      geozone: json['geozone'] as int,
+      tarif: json['tarif'] as int,
+      createdAt: json['created_at'] as String?,
+      id: json['id'] as int?,
     );
 
 Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'date_begin': instance.dateBegin,
       'date_end': instance.dateEnd,
-      'price': instance.price,
       'user': instance.user,
+      'price': instance.price,
       'satellites': instance.satellites,
-      'created_at': instance.createdAt,
       'status': instance.status,
       'geozone': instance.geozone,
       'tarif': instance.tarif,
+      'created_at': instance.createdAt,
+      'id': instance.id,
     };

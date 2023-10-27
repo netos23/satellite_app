@@ -20,19 +20,19 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Order {
-  int get id => throw _privateConstructorUsedError;
   @JsonKey(name: "date_begin")
   String get dateBegin => throw _privateConstructorUsedError;
   @JsonKey(name: "date_end")
   String get dateEnd => throw _privateConstructorUsedError;
-  double get price => throw _privateConstructorUsedError;
-  int get user => throw _privateConstructorUsedError;
+  int? get user => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   List<int> get satellites => throw _privateConstructorUsedError;
+  int? get status => throw _privateConstructorUsedError;
+  int get geozone => throw _privateConstructorUsedError;
+  int get tarif => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
-  int? get status => throw _privateConstructorUsedError;
-  int? get geozone => throw _privateConstructorUsedError;
-  int? get tarif => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,16 +45,16 @@ abstract class $OrderCopyWith<$Res> {
       _$OrderCopyWithImpl<$Res, Order>;
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: "date_begin") String dateBegin,
+      {@JsonKey(name: "date_begin") String dateBegin,
       @JsonKey(name: "date_end") String dateEnd,
-      double price,
-      int user,
+      int? user,
+      double? price,
       List<int> satellites,
-      @JsonKey(name: "created_at") String? createdAt,
       int? status,
-      int? geozone,
-      int? tarif});
+      int geozone,
+      int tarif,
+      @JsonKey(name: "created_at") String? createdAt,
+      int? id});
 }
 
 /// @nodoc
@@ -70,22 +70,18 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? dateBegin = null,
     Object? dateEnd = null,
-    Object? price = null,
-    Object? user = null,
+    Object? user = freezed,
+    Object? price = freezed,
     Object? satellites = null,
-    Object? createdAt = freezed,
     Object? status = freezed,
-    Object? geozone = freezed,
-    Object? tarif = freezed,
+    Object? geozone = null,
+    Object? tarif = null,
+    Object? createdAt = freezed,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       dateBegin: null == dateBegin
           ? _value.dateBegin
           : dateBegin // ignore: cast_nullable_to_non_nullable
@@ -94,33 +90,37 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.dateEnd
           : dateEnd // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       satellites: null == satellites
           ? _value.satellites
           : satellites // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      geozone: freezed == geozone
+      geozone: null == geozone
           ? _value.geozone
           : geozone // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarif: freezed == tarif
+              as int,
+      tarif: null == tarif
           ? _value.tarif
           : tarif // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int?,
     ) as $Val);
   }
@@ -134,16 +134,16 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      @JsonKey(name: "date_begin") String dateBegin,
+      {@JsonKey(name: "date_begin") String dateBegin,
       @JsonKey(name: "date_end") String dateEnd,
-      double price,
-      int user,
+      int? user,
+      double? price,
       List<int> satellites,
-      @JsonKey(name: "created_at") String? createdAt,
       int? status,
-      int? geozone,
-      int? tarif});
+      int geozone,
+      int tarif,
+      @JsonKey(name: "created_at") String? createdAt,
+      int? id});
 }
 
 /// @nodoc
@@ -157,22 +157,18 @@ class __$$OrderImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? dateBegin = null,
     Object? dateEnd = null,
-    Object? price = null,
-    Object? user = null,
+    Object? user = freezed,
+    Object? price = freezed,
     Object? satellites = null,
-    Object? createdAt = freezed,
     Object? status = freezed,
-    Object? geozone = freezed,
-    Object? tarif = freezed,
+    Object? geozone = null,
+    Object? tarif = null,
+    Object? createdAt = freezed,
+    Object? id = freezed,
   }) {
     return _then(_$OrderImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       dateBegin: null == dateBegin
           ? _value.dateBegin
           : dateBegin // ignore: cast_nullable_to_non_nullable
@@ -181,33 +177,37 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.dateEnd
           : dateEnd // ignore: cast_nullable_to_non_nullable
               as String,
-      price: null == price
-          ? _value.price
-          : price // ignore: cast_nullable_to_non_nullable
-              as double,
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as double?,
       satellites: null == satellites
           ? _value._satellites
           : satellites // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String?,
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as int?,
-      geozone: freezed == geozone
+      geozone: null == geozone
           ? _value.geozone
           : geozone // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarif: freezed == tarif
+              as int,
+      tarif: null == tarif
           ? _value.tarif
           : tarif // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int?,
     ));
   }
@@ -217,23 +217,21 @@ class __$$OrderImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$OrderImpl implements _Order {
   _$OrderImpl(
-      {required this.id,
-      @JsonKey(name: "date_begin") required this.dateBegin,
+      {@JsonKey(name: "date_begin") required this.dateBegin,
       @JsonKey(name: "date_end") required this.dateEnd,
-      required this.price,
-      required this.user,
+      this.user,
+      this.price,
       required final List<int> satellites,
-      @JsonKey(name: "created_at") this.createdAt,
       this.status,
-      this.geozone,
-      this.tarif})
+      required this.geozone,
+      required this.tarif,
+      @JsonKey(name: "created_at") this.createdAt,
+      this.id})
       : _satellites = satellites;
 
   factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderImplFromJson(json);
 
-  @override
-  final int id;
   @override
   @JsonKey(name: "date_begin")
   final String dateBegin;
@@ -241,9 +239,9 @@ class _$OrderImpl implements _Order {
   @JsonKey(name: "date_end")
   final String dateEnd;
   @override
-  final double price;
+  final int? user;
   @override
-  final int user;
+  final double? price;
   final List<int> _satellites;
   @override
   List<int> get satellites {
@@ -253,18 +251,20 @@ class _$OrderImpl implements _Order {
   }
 
   @override
+  final int? status;
+  @override
+  final int geozone;
+  @override
+  final int tarif;
+  @override
   @JsonKey(name: "created_at")
   final String? createdAt;
   @override
-  final int? status;
-  @override
-  final int? geozone;
-  @override
-  final int? tarif;
+  final int? id;
 
   @override
   String toString() {
-    return 'Order(id: $id, dateBegin: $dateBegin, dateEnd: $dateEnd, price: $price, user: $user, satellites: $satellites, createdAt: $createdAt, status: $status, geozone: $geozone, tarif: $tarif)';
+    return 'Order(dateBegin: $dateBegin, dateEnd: $dateEnd, user: $user, price: $price, satellites: $satellites, status: $status, geozone: $geozone, tarif: $tarif, createdAt: $createdAt, id: $id)';
   }
 
   @override
@@ -272,35 +272,35 @@ class _$OrderImpl implements _Order {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OrderImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.dateBegin, dateBegin) ||
                 other.dateBegin == dateBegin) &&
             (identical(other.dateEnd, dateEnd) || other.dateEnd == dateEnd) &&
-            (identical(other.price, price) || other.price == price) &&
             (identical(other.user, user) || other.user == user) &&
+            (identical(other.price, price) || other.price == price) &&
             const DeepCollectionEquality()
                 .equals(other._satellites, _satellites) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.geozone, geozone) || other.geozone == geozone) &&
-            (identical(other.tarif, tarif) || other.tarif == tarif));
+            (identical(other.tarif, tarif) || other.tarif == tarif) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      id,
       dateBegin,
       dateEnd,
-      price,
       user,
+      price,
       const DeepCollectionEquality().hash(_satellites),
-      createdAt,
       status,
       geozone,
-      tarif);
+      tarif,
+      createdAt,
+      id);
 
   @JsonKey(ignore: true)
   @override
@@ -318,21 +318,19 @@ class _$OrderImpl implements _Order {
 
 abstract class _Order implements Order {
   factory _Order(
-      {required final int id,
-      @JsonKey(name: "date_begin") required final String dateBegin,
+      {@JsonKey(name: "date_begin") required final String dateBegin,
       @JsonKey(name: "date_end") required final String dateEnd,
-      required final double price,
-      required final int user,
+      final int? user,
+      final double? price,
       required final List<int> satellites,
-      @JsonKey(name: "created_at") final String? createdAt,
       final int? status,
-      final int? geozone,
-      final int? tarif}) = _$OrderImpl;
+      required final int geozone,
+      required final int tarif,
+      @JsonKey(name: "created_at") final String? createdAt,
+      final int? id}) = _$OrderImpl;
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$OrderImpl.fromJson;
 
-  @override
-  int get id;
   @override
   @JsonKey(name: "date_begin")
   String get dateBegin;
@@ -340,20 +338,22 @@ abstract class _Order implements Order {
   @JsonKey(name: "date_end")
   String get dateEnd;
   @override
-  double get price;
+  int? get user;
   @override
-  int get user;
+  double? get price;
   @override
   List<int> get satellites;
+  @override
+  int? get status;
+  @override
+  int get geozone;
+  @override
+  int get tarif;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;
   @override
-  int? get status;
-  @override
-  int? get geozone;
-  @override
-  int? get tarif;
+  int? get id;
   @override
   @JsonKey(ignore: true)
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>

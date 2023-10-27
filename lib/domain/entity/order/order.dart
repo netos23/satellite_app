@@ -7,19 +7,19 @@ part 'order.g.dart';
 @freezed
 class Order with _$Order {
   factory Order({
-    required int id,
     @JsonKey(name: "date_begin")
     required String dateBegin,
     @JsonKey(name: "date_end")
     required String dateEnd,
-    required double price,
-    required int user,
+    int? user,
+    double? price,
     required List<int> satellites,
+    int? status,
+    required int geozone,
+    required int tarif,
     @JsonKey(name: "created_at")
     String? createdAt,
-    int? status,
-    int? geozone,
-    int? tarif,
+    int? id,
   }) = _Order;
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
