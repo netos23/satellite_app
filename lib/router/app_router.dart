@@ -36,6 +36,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AuthCodeRoute.page),
         AutoRoute(page: RegisterRoute.page),
         AutoRoute(
+          page: OrderingRoute.page,
+        ),
+        AutoRoute(
           page: HomeRoute.page,
           initial: true,
           children: [
@@ -58,7 +61,6 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: EditProfileRoute.page,
                 ),
-
               ],
             ),
             AutoRoute(
@@ -66,20 +68,14 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: MapRoute.page,
-                ),
-                AutoRoute(
-                  page: OrderingRoute.page,
                   initial: true,
                 ),
               ],
             ),
-
           ],
         ),
       ];
 }
-
-
 
 @RoutePage(name: 'ShowCaseTab')
 class ShowCaseTabPage extends AutoRouter {

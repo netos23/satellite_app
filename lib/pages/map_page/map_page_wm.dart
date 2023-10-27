@@ -1,15 +1,11 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
-import 'package:satellite_app/router/app_router.dart';
-import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+
 import 'map_page_model.dart';
 import 'map_page_widget.dart';
 
@@ -19,27 +15,28 @@ abstract class IMapPageWidgetModel extends IWidgetModel
 
   ProfileUseCase get profileUseCase;
 
-  void onEditProfileTap();
-
-  void onCalendarTap();
-
-  void linkToTelegram();
-
   TextEditingController get brandController;
 
   TextEditingController get addressController;
 
+  void onMapCreated(GoogleMapController controller);
+
+  Future<void> openSettings();
+
+  void zoomIn();
+
+  void zoomOut();
+
+  void addPoint();
 }
 
-MapPageWidgetModel defaultMapPageWidgetModelFactory(
-    BuildContext context) {
+MapPageWidgetModel defaultMapPageWidgetModelFactory(BuildContext context) {
   return MapPageWidgetModel(MapPageModel());
 }
 
 // TODO: cover with documentation
 /// Default widget model for ProfilePageWidget
-class MapPageWidgetModel
-    extends WidgetModel<MapPageWidget, MapPageModel>
+class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     with ThemeProvider
     implements IMapPageWidgetModel {
   MapPageWidgetModel(MapPageModel model) : super(model);
@@ -50,11 +47,23 @@ class MapPageWidgetModel
       profileUseCase.profile.valueOrNull == null ||
       (profileUseCase.profile.value!.email ?? '').isEmpty;
 
-  bool get isClientUser =>
-      profileUseCase.profile.valueOrNull?.role != 'farmer';
+  bool get isClientUser => profileUseCase.profile.valueOrNull?.role != 'farmer';
 
   final telegramLink =
       'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
+
+  @override
+  AuthRepository authRepository = AuthRepository(
+    AppComponents().authService,
+  );
+
+  @override
+  final addressController = TextEditingController();
+
+  @override
+  final brandController = TextEditingController();
+
+  GoogleMapController? controller;
 
   @override
   void initWidgetModel() {
@@ -65,208 +74,30 @@ class MapPageWidgetModel
   }
 
   @override
-  AuthRepository authRepository = AuthRepository(
-    AppComponents().authService,
-  );
-
-
-  @override
-  void onCalendarTap() {
-    onUnauthorisedTap(() {
-      onClientTap(() {
-        () async {
-          if(kIsWeb){
-            context.showSnackBar(
-              'ПОддерживается только в мобильном приложение',
-            );
-            return;
-          }
-
-          final resp = await AppComponents().dio.get('/subscriptions/calendar');
-          context.showSnackBar(
-            'Возникли проблемы при сохранении файла',
-          );
-        };
-      });
-    });
+  void onMapCreated(GoogleMapController controller) {
+    this.controller = controller;
   }
 
-  Widget _buildClientContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Данный раздел доступен только пользователям, зарегистрированным в качестве фермера. Чтобы стать фермером - перейдите в раздел "Мои данные" и измените свой статус',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        Column(
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                    context.pushRoute(EditProfileRoute());
-                  },
-                  child: const Center(
-                    child: Text('Become a farmer'),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  child: const Center(
-                    child: Text('Позже'),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
+  @override
+  Future<void> openSettings() async {}
+
+  @override
+  void zoomIn() {
+    controller?.animateCamera(
+      CameraUpdate.zoomIn(),
     );
   }
 
   @override
-  void onUnauthorisedTap(void Function() onTap) {
-    if (isUnauthorisedUser) {
-      showModalBottomSheet(
-        context: router.root.navigatorKey.currentContext!,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(25),
-            topLeft: Radius.circular(25),
-          ),
-        ),
-        builder: _buildUnauthorisedContent,
-      );
-    } else {
-      onTap();
-    }
-  }
-
-  @override
-  void linkToTelegram() {
-    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '',
-        mode: LaunchMode.externalApplication);
-  }
-
-  @override
-  void onClientTap(void Function() onTap) {
-    if (isClientUser) {
-      showModalBottomSheet(
-        context: router.root.navigatorKey.currentContext!,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(25),
-            topLeft: Radius.circular(25),
-          ),
-        ),
-        builder: _buildClientContent,
-      );
-    } else {
-      onTap();
-    }
-  }
-
-  @override
-  void onEditProfileTap() {
-    onUnauthorisedTap(() {
-      router.push(EditProfileRoute(profile: profileUseCase.profile.value));
-    });
-  }
-
-  Widget _buildUnauthorisedContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Данный раздел доступен только авторизованным пользователям, войдите или зарегистрируйтесь',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        Column(
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                   // context.pushRoute(AuthRoute());
-                  },
-                  child: const Center(
-                    child: Text('Войти'),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  child: const Center(
-                    child: Text('Позже'),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
+  void zoomOut() {
+    controller?.animateCamera(
+      CameraUpdate.zoomOut(),
     );
   }
 
-  @override
-  final addressController = TextEditingController();
 
   @override
-  final brandController = TextEditingController();
+  void addPoint() {
+
+  }
 }
