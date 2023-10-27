@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:satellite_app/domain/entity/auth/auth_email_part1_request.dart';
 import 'package:satellite_app/internal/app_components.dart';
 import 'package:satellite_app/internal/logger.dart';
+import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 import '../../data/repository/auth_repository.dart';
@@ -47,16 +48,15 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
           digits: 4,
         ),
       );
-      // router.push(
-      //   AuthCodeRoute(email: emailController.text),
-      // );
+      router.push(
+        AuthCodeRoute(email: emailController.text),
+      );
     } on DioException catch (error) {
       if (error.response?.statusCode == 451) {
-        // router.push(RegisterRoute(email: emailController.text));
-        // context.showSnackBar('Пользователь не зарегистрирован');
-        // return;
+        router.push(RegisterRoute(email: emailController.text));
+        context.showSnackBar('Пользователь не зарегистрирован');
+        return;
       }
-
       throw Exception(
         error.response?.data['message'],
       );

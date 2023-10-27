@@ -60,6 +60,23 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    OrderingRoute.name: (routeData) {
+      final args = routeData.argsAs<OrderingRouteArgs>(
+          orElse: () => const OrderingRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: OrderingPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    OrderingTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OrderingTabPage(),
+      );
+    },
     ProfileRoute.name: (routeData) {
       final args = routeData.argsAs<ProfileRouteArgs>(
           orElse: () => const ProfileRouteArgs());
@@ -306,6 +323,61 @@ class HomeRouteArgs {
   String toString() {
     return 'HomeRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
+}
+
+/// generated route for
+/// [OrderingPageWidget]
+class OrderingRoute extends PageRouteInfo<OrderingRouteArgs> {
+  OrderingRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultOrderingPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          OrderingRoute.name,
+          args: OrderingRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderingRoute';
+
+  static const PageInfo<OrderingRouteArgs> page =
+      PageInfo<OrderingRouteArgs>(name);
+}
+
+class OrderingRouteArgs {
+  const OrderingRouteArgs({
+    this.key,
+    this.wmFactory = defaultOrderingPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'OrderingRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [OrderingTabPage]
+class OrderingTab extends PageRouteInfo<void> {
+  const OrderingTab({List<PageRouteInfo>? children})
+      : super(
+          OrderingTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OrderingTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

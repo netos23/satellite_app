@@ -11,6 +11,8 @@ import 'package:satellite_app/pages/edit_profile_page/edit_profile_page_widget.d
 import 'package:satellite_app/pages/edit_profile_page/edit_profile_page_wm.dart';
 import 'package:satellite_app/pages/home_page/home_page_widget.dart';
 import 'package:satellite_app/pages/home_page/home_page_wm.dart';
+import 'package:satellite_app/pages/ordering_page/ordering_page_widget.dart';
+import 'package:satellite_app/pages/ordering_page/ordering_page_wm.dart';
 import 'package:satellite_app/pages/profile_page/profile_page.dart';
 import 'package:satellite_app/pages/register_page/register_page_widget.dart';
 import 'package:satellite_app/pages/register_page/register_page_wm.dart';
@@ -57,6 +59,15 @@ class AppRouter extends _$AppRouter {
 
               ],
             ),
+            AutoRoute(
+              page: OrderingTab.page,
+              children: [
+                AutoRoute(
+                  page: OrderingRoute.page,
+                  initial: true,
+                ),
+              ],
+            ),
 
           ],
         ),
@@ -70,10 +81,10 @@ class ShowCaseTabPage extends AutoRouter {
   const ShowCaseTabPage({super.key});
 }
 
-// @RoutePage(name: 'CatalogTab')
-// class CatalogTabPage extends AutoRouter {
-//   const CatalogTabPage({super.key});
-// }
+@RoutePage(name: 'OrderingTab')
+class OrderingTabPage extends AutoRouter {
+  const OrderingTabPage({super.key});
+}
 
 @RoutePage(name: 'UserProfileTab')
 class UserProfileTabPage extends AutoRouter {

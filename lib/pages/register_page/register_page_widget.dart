@@ -164,23 +164,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
             const SizedBox(
               height: 16,
             ),
-            StreamBuilder<bool>(
-                stream: wm.isFarmer.stream,
-                initialData: false,
-                builder: (context, isFarmerSnapshot) {
-                  final isFarmValue =
-                      isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
-                  return _FarmerCheckbox(
-                    value: isFarmValue,
-                    onChanged: () {
-                      wm.isFarmer.add(!isFarmValue);
-                    },
-                    text: 'Зарегистрироваться как фермер',
-                  );
-                }),
-            const SizedBox(
-              height: 16,
-            ),
             SizedBox(
               height: 50,
               child: FilledButton(

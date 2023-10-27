@@ -30,172 +30,161 @@ class EditProfilePageWidget
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: StreamBuilder<Profile?>(
+          stream: wm.profileController,
+            initialData: wm.profileController.valueOrNull,
+            builder: (context, snapshot) {
+            return Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    'Фамилия Имя',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Фамилия Имя',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onBackground,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  controller: wm.firstNameController,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.firstNameController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(
+                        'Фамилия Имя',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onBackground,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.secondNameController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        'Email',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onBackground,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.emailController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        'Дата рождения',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onBackground,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.bitrhdayController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        'Номер телефона',
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onBackground,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.phoneNumber,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
-                  height: 8,
+                  height: 16,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    'Фамилия Имя',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  controller: wm.secondNameController,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
+                StreamBuilder<String?>(
+                    stream: wm.genderController.stream,
+                    builder: (context, genderSnapshot) {
+                      return Row(
+                        children: [
+                          _GenderCheckbox.male(
+                            value: genderSnapshot.data == 'male',
+                            onChanged: () {
+                              wm.genderController.add('male');
+                            },
+                          ),
+                          const SizedBox(width: 32),
+                          _GenderCheckbox.female(
+                            value: genderSnapshot.data == 'female',
+                            onChanged: () {
+                              wm.genderController.add('female');
+                            },
+                          ),
+                        ],
+                      );
+                    }),
                 const SizedBox(
-                  height: 8,
+                  height: 16,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
-                  child: Text(
-                    'Email',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
+                SizedBox(
+                  height: 50,
+                  child: FilledButton(
+                    style: theme.filledButtonTheme.style?.copyWith(
+                        fixedSize:
+                            const MaterialStatePropertyAll(Size.fromHeight(50))),
+                    onPressed: wm.onEditProfile,
+                    child: const Center(
+                      child: Text('Сохранить'),
                     ),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  controller: wm.emailController,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
-                  child: Text(
-                    'Дата рождения',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  controller: wm.bitrhdayController,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
-                  child: Text(
-                    'Номер телефона',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-                TextField(
-                  textAlign: TextAlign.center,
-                  controller: wm.phoneNumber,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            StreamBuilder<String?>(
-                stream: wm.genderController.stream,
-                builder: (context, genderSnapshot) {
-                  return Row(
-                    children: [
-                      _GenderCheckbox.male(
-                        value: genderSnapshot.data == 'male',
-                        onChanged: () {
-                          wm.genderController.add('male');
-                        },
-                      ),
-                      const SizedBox(width: 32),
-                      _GenderCheckbox.female(
-                        value: genderSnapshot.data == 'female',
-                        onChanged: () {
-                          wm.genderController.add('female');
-                        },
-                      ),
-                    ],
-                  );
-                }),
-            const SizedBox(
-              height: 16,
-            ),
-            StreamBuilder<bool>(
-                stream: wm.isFarmer.stream,
-                initialData: false,
-                builder: (context, isFarmerSnapshot) {
-                  final isFarmValue =
-                      isFarmerSnapshot.hasData ? isFarmerSnapshot.data! : false;
-                  return _FarmerCheckbox(
-                    value: isFarmValue,
-                    onChanged: () {
-                      wm.isFarmer.add(!isFarmValue);
-                    },
-                    text: 'Зарегистрироваться как фермер',
-                  );
-                }),
-            const SizedBox(
-              height: 16,
-            ),
-            SizedBox(
-              height: 50,
-              child: FilledButton(
-                style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize:
-                        const MaterialStatePropertyAll(Size.fromHeight(50))),
-                onPressed: wm.onEditProfile,
-                child: const Center(
-                  child: Text('Сохранить'),
-                ),
-              ),
-            ),
-          ],
+            );
+          }
         ),
       ),
     );

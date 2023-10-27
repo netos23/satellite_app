@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:satellite_app/router/app_router.dart';
 
 import 'color_schemes.g.dart';
@@ -10,18 +10,25 @@ class App extends StatelessWidget {
 
   final _appRouter = AppRouter();
 
-
   @override
   Widget build(BuildContext context) {
     final themeMode = context.watch<ValueNotifier<ThemeMode>>();
 
     return MaterialApp.router(
       theme: ThemeData(
+        // filledButtonTheme: const FilledButtonThemeData(
+        //   style: ButtonStyle(
+        //     shape: MaterialStatePropertyAll<BorderSide>(
+        //       BorderSide()
+        //     ),
+        //   ),
+        // ),
+
         useMaterial3: true,
         colorScheme: lightColorScheme,
         textTheme: GoogleFonts.montserratTextTheme(),
         appBarTheme: AppBarTheme(
-          titleTextStyle: GoogleFonts.aboreto(
+          titleTextStyle: GoogleFonts.montserrat(
             fontSize: 22,
             color: lightColorScheme.onBackground,
           ),

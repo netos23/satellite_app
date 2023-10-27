@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/value_stream_wrapper.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
@@ -82,14 +83,14 @@ class RegisterPageWidgetModel
 
     try {
       await authRepository.register(profile: request);
-      // router.push(
-      //   AuthCodeRoute(email: request.email),
-      // );
+      router.push(
+        AuthCodeRoute(email: request.email),
+      );
     } on DioException catch (error) {
-      // if (error.response?.statusCode == 403) {
-      //   context.showSnackBar('Пользователь уже зарегистрирован');
-      //   return;
-      // }
+      if (error.response?.statusCode == 403) {
+        context.showSnackBar('Пользователь уже зарегистрирован');
+        return;
+      }
       throw Exception(
         error.response?.data['message'],
       );

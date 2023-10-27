@@ -31,7 +31,7 @@ class _MobilePage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         ShowCaseTab(),
-        // CatalogTab(),
+        OrderingTab(),
         UserProfileTab(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -45,10 +45,10 @@ class _MobilePage extends StatelessWidget {
               label: 'Статьи',
               icon: Icon(Icons.photo_outlined),
             ),
-            // NavigationDestination(
-            //   label: 'Заказ',
-            //    icon: Icon(Icons.map),
-            // ),
+            NavigationDestination(
+              label: 'Заказ',
+               icon: Icon(Icons.map),
+            ),
             NavigationDestination(
               label: 'Профиль',
               icon: Icon(Icons.person_outline),
@@ -69,7 +69,7 @@ class _WebPage extends StatelessWidget {
       builder: (context, child) {
         const tabs = [
           ShowCaseTab(),
-          //CatalogTab(),
+          OrderingTab(),
           UserProfileTab(),
         ];
 
@@ -111,10 +111,10 @@ class _WebPage extends StatelessWidget {
                             label: Text('Статьи'),
                             icon: Icon(Icons.photo_outlined),
                           ),
-                          // NavigationRailDestination(
-                          //   label: Text('Заказ'),
-                          //   icon: Icon(Icons.map),
-                          // ),
+                          NavigationRailDestination(
+                            label: Text('Заказ'),
+                            icon: Icon(Icons.map),
+                          ),
                           NavigationRailDestination(
                             label: Text('Профиль'),
                             icon: Icon(Icons.person_outline),

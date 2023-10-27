@@ -6,6 +6,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:satellite_app/domain/models/banner.dart';
 import 'package:satellite_app/pages/components/loading_indicator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 import 'show_case_page_wm.dart';
 
 // TODO: cover with documentation
@@ -20,6 +21,24 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
   @override
   Widget build(IShowCasePageWidgetModel wm) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        bottomOpacity: 0.5,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Image.asset(
+            'assets/images/logo.png',
+            width: 60,
+            height: 60,
+          ),
+        ),
+        title: const Text(
+          'S.T.A.R. STALKER',
+          style: TextStyle(
+            fontStyle: FontStyle.italic,
+          ),
+        ),
+      ),
       body: SafeArea(
         child: EntityStateNotifierBuilder(
           listenableEntityState: wm.bannersState,
@@ -96,11 +115,11 @@ class _ImageBannerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: 16.0,
+        horizontal: 0,
       ),
       child: ClipRRect(
         clipBehavior: Clip.antiAlias,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(0),
         child: GestureDetector(
           onTap: link != null ? () => onTap?.call(link!) : null,
           child: AspectRatio(

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/subjects.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
@@ -8,13 +9,12 @@ import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/value_stream_wrapper.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
+
 import 'edit_profile_page_model.dart';
 import 'edit_profile_page_widget.dart';
 
 abstract class IEditProfilePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
-  ValueStreamWrapper<bool> get isFarmer;
-
   ValueStreamWrapper<String?> get genderController;
 
   ProfileUseCase get profileUseCase;
@@ -28,6 +28,8 @@ abstract class IEditProfilePageWidgetModel extends IWidgetModel
   TextEditingController get bitrhdayController;
 
   TextEditingController get phoneNumber;
+
+  BehaviorSubject<Profile?> get profileController;
 
   onEditProfile();
 }
@@ -64,30 +66,43 @@ class EditProfilePageWidgetModel
   ValueStreamWrapper<String?> genderController = ValueStreamWrapper();
 
   @override
-  ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
+  BehaviorSubject<Profile?> profileController = BehaviorSubject<Profile?>();
+
 
   @override
   void initWidgetModel() {
     super.initWidgetModel();
+
+    if (profileController.valueOrNull != null) {
+      profileController.add(profileUseCase.profile.value);
+    }
+
+    profileUseCase.profile.stream.listen((event) {
+      profileController.add(event);
+    });
+
+    if (profileUseCase.profile.valueOrNull == null) {
+      profileUseCase.loadProfile();
+    }
+
     emailController.text = widget.profile?.email ?? '';
     firstNameController.text = widget.profile?.firstName ?? '';
     secondNameController.text = widget.profile?.secondName ?? '';
     phoneNumber.text = widget.profile?.phone ?? '';
     bitrhdayController.text = widget.profile?.birthDate ?? '';
     genderController.add(widget.profile?.gender);
-    isFarmer.add(widget.profile?.role == 'farmer');
   }
 
   @override
   Future<void> onEditProfile() async {
     final request = Profile(
-        email: emailController.text,
-        firstName: firstNameController.text,
-        secondName: secondNameController.text,
-        phone: phoneNumber.text,
-        birthDate: bitrhdayController.text,
-        gender: genderController.value,
-        role: isFarmer.value ? 'farmer' : 'client');
+      email: emailController.text,
+      firstName: firstNameController.text,
+      secondName: secondNameController.text,
+      phone: phoneNumber.text,
+      birthDate: bitrhdayController.text,
+      gender: genderController.value,
+    );
 
     try {
       await profileUseCase.patchProfile(request);
@@ -108,7 +123,7 @@ class EditProfilePageWidgetModel
   @override
   void dispose() {
     genderController.dispose();
-    isFarmer.dispose();
+    profileController.close();
     super.dispose();
   }
 

@@ -34,8 +34,8 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
             ],
           ),
           body: StreamBuilder<Profile?>(
-            initialData: wm.profileUseCase.profile.valueOrNull,
-            stream: wm.profileUseCase.profile.stream,
+            initialData: wm.profileController.valueOrNull,
+            stream: wm.profileController.stream,
             builder: (context, profileSnapshot) {
               final isLogin = profileSnapshot.hasData &&
                   profileSnapshot.data!.email.isNotEmpty;
@@ -47,49 +47,48 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
               final userImage = getUserImage(gender: profile?.gender);
               return CustomScrollView(
                 slivers: [
-                  SliverProfileGrid(
-                    profileCards: [
-                      ProfileCard(
-                        title: 'Мои данные',
-                        image: userImage,
-                        onTap: wm.onEditProfileTap,
-                      ),
-                      // ProfileCard(
-                      //   title: 'Подписки',
-                      //   image: 'assets/images/basket_t.png',
-                      //   onTap: wm.onBasketTap,
-                      // ),
-                      // ProfileCard(
-                      //   title: 'Статьи',
-                      //   image: 'assets/images/farmer.png',
-                      //   onTap: wm.onFarmShowCaseTap,
-                      // ),
-                      // ProfileCard(
-                      //   title: 'Календарь',
-                      //   image: 'assets/images/calendar.png',
-                      //   onTap: wm.onCalendarTap,
-                      // ),
-                      // ProfileCard(
-                      //   title: 'Мои заказы',
-                      //   image: 'assets/images/order_history.png',
-                      //   onTap: wm.onOrderHistoryTap,
-                      // ),ProfileCard(
-                      //   title: 'Мои заказы',
-                      //   image: 'assets/images/order_history.png',
-                      //   onTap: wm.onOrderHistoryTap,
-                      // ),
-                    ],
-                  ),
                   SliverList(
                     delegate: SliverChildListDelegate(
                       [
                         if (!isLogin)
-                        Expanded(
-                          child: Text(
-                            'Необходима авторизация',
-                            textAlign: TextAlign.center,
-                            style: textTheme.bodyLarge?.copyWith(
-                              color: colorTheme.onBackground,
+                          Expanded(
+                            child: Text(
+                              'Необходима авторизация',
+                              textAlign: TextAlign.center,
+                              style: textTheme.bodyLarge?.copyWith(
+                                color: colorTheme.onBackground,
+                              ),
+                            ),
+                          ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: 57,
+                          child: Card(
+                            child: InkWell(
+                              onTap: wm.onEditProfileTap,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // Image.asset(
+                                  //   'assets/images/telegram_icon.png',
+                                  //   width: 21,
+                                  //   height: 21,
+                                  // ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16.0),
+                                    child: Text(
+                                      'Мои данные',
+                                      style: theme.textTheme.bodyMedium
+                                          ?.copyWith(
+                                          color:
+                                          theme.colorScheme.onSurface,
+                                          overflow:
+                                          TextOverflow.ellipsis),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -115,10 +114,10 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                                         'Получать уведомления в Телеграм',
                                         style: theme.textTheme.bodyMedium
                                             ?.copyWith(
-                                            color:
-                                            theme.colorScheme.onSurface,
-                                            overflow:
-                                            TextOverflow.ellipsis),
+                                                color:
+                                                    theme.colorScheme.onSurface,
+                                                overflow:
+                                                    TextOverflow.ellipsis),
                                       ),
                                     )
                                   ],
@@ -126,37 +125,6 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                               ),
                             ),
                           ),
-                        // Visibility(
-                        //   visible: isFarmer && hasNotBrand,
-                        //   child: Container(
-                        //     padding: const EdgeInsets.symmetric(horizontal: 16),
-                        //     height: 57,
-                        //     child: Card(
-                        //       child: InkWell(
-                        //         onTap: wm.registerBrand,
-                        //         child: Row(
-                        //           mainAxisAlignment: MainAxisAlignment.center,
-                        //           children: [
-                        //             Padding(
-                        //               padding: const EdgeInsets.symmetric(
-                        //                   horizontal: 16.0),
-                        //               child: Text(
-                        //                 'Зарегистрировать свой бренд',
-                        //                 style: theme.textTheme.bodyMedium
-                        //                     ?.copyWith(
-                        //                         color:
-                        //                             theme.colorScheme.onSurface,
-                        //                         overflow:
-                        //                             TextOverflow.ellipsis),
-                        //               ),
-                        //             )
-                        //           ],
-                        //         ),
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
-                        const Spacer(),
                         Center(
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -182,6 +150,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                             ),
                           ),
                         ),
+                        // const Switch(value: true, onChanged: null),
                         // const SizedBox(
                         //   height: 50,
                         // ),
