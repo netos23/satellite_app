@@ -35,7 +35,9 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: AuthCodeRoute.page),
         AutoRoute(page: RegisterRoute.page),
-        AutoRoute(page: OrderingRoute.page),
+        AutoRoute(
+          page: OrderingRoute.page,
+        ),
         AutoRoute(
           page: HomeRoute.page,
           initial: true,
@@ -66,6 +68,7 @@ class AppRouter extends _$AppRouter {
               children: [
                 AutoRoute(
                   page: MapRoute.page,
+                  initial: true,
                 ),
               ],
             ),
