@@ -1,10 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:satellite_app/domain/models/profile.dart';
-import 'package:satellite_app/pages/components/theme_switch.dart';
-import 'package:satellite_app/router/app_router.dart';
 
 import 'ordering_page_wm.dart';
 
@@ -136,6 +132,43 @@ class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
                   ),
                 ),
                 //const Spacer(),
+                const SizedBox(
+                  height: 16,
+                ),
+                Text('Выбор cпутников', style: theme.textTheme.bodyLarge,),
+                const Center(child: CircularProgressIndicator()),
+                const SizedBox(
+                  height: 16,
+                ),
+                Text('Выбор тарифа', style: theme.textTheme.bodyLarge,),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Center(child: CircularProgressIndicator()),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Center(child: CircularProgressIndicator()),
+                const SizedBox(
+                  height: 4,
+                ),
+                const Center(child: CircularProgressIndicator()),
+                const SizedBox(
+                  height: 16,
+                ),
+                Text('Выбор тарифа', style: theme.textTheme.bodyLarge,),
+                const SizedBox(
+                  height: 4,
+                ),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(child: CircularProgressIndicator()),
+                  ],
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: SizedBox(
@@ -145,7 +178,7 @@ class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
                           fixedSize:
                           const MaterialStatePropertyAll(Size.fromHeight(50))),
                       onPressed: wm.profileUseCase.logout,
-                      child: const Center(child: Text('Разлогиниться')),
+                      child: const Center(child: Text('Оформить')),
                     ),
                   ),
                 ),

@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 
 import 'map_page_model.dart';
@@ -98,6 +99,6 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
 
   @override
   void addPoint() {
-
+    router.push(OrderingRoute());
   }
 }
