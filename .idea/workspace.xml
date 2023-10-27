@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(auth screen update)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" afterDir="false" />
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="feature(add map screen)">
+      <change beforePath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/router/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698406031080</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feature(add map screen)">
+      <created>1698407495481</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698407495481</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -126,7 +133,8 @@
     <MESSAGE value="feature(config project)" />
     <MESSAGE value="fix(ordering screen view)" />
     <MESSAGE value="fix(auth screen update)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(auth screen update)" />
+    <MESSAGE value="feature(add map screen)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feature(add map screen)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

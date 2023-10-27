@@ -60,6 +60,23 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    MapRoute.name: (routeData) {
+      final args =
+          routeData.argsAs<MapRouteArgs>(orElse: () => const MapRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MapPageWidget(
+          key: args.key,
+          wmFactory: args.wmFactory,
+        ),
+      );
+    },
+    MapTab.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MapTabPage(),
+      );
+    },
     OrderingRoute.name: (routeData) {
       final args = routeData.argsAs<OrderingRouteArgs>(
           orElse: () => const OrderingRouteArgs());
@@ -69,12 +86,6 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           wmFactory: args.wmFactory,
         ),
-      );
-    },
-    OrderingTab.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrderingTabPage(),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -326,6 +337,60 @@ class HomeRouteArgs {
 }
 
 /// generated route for
+/// [MapPageWidget]
+class MapRoute extends PageRouteInfo<MapRouteArgs> {
+  MapRoute({
+    Key? key,
+    WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+            BuildContext)
+        wmFactory = defaultMapPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapRoute.name,
+          args: MapRouteArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapRoute';
+
+  static const PageInfo<MapRouteArgs> page = PageInfo<MapRouteArgs>(name);
+}
+
+class MapRouteArgs {
+  const MapRouteArgs({
+    this.key,
+    this.wmFactory = defaultMapPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
+      BuildContext) wmFactory;
+
+  @override
+  String toString() {
+    return 'MapRouteArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [MapTabPage]
+class MapTab extends PageRouteInfo<void> {
+  const MapTab({List<PageRouteInfo>? children})
+      : super(
+          MapTab.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MapTab';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [OrderingPageWidget]
 class OrderingRoute extends PageRouteInfo<OrderingRouteArgs> {
   OrderingRoute({
@@ -364,20 +429,6 @@ class OrderingRouteArgs {
   String toString() {
     return 'OrderingRouteArgs{key: $key, wmFactory: $wmFactory}';
   }
-}
-
-/// generated route for
-/// [OrderingTabPage]
-class OrderingTab extends PageRouteInfo<void> {
-  const OrderingTab({List<PageRouteInfo>? children})
-      : super(
-          OrderingTab.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'OrderingTab';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

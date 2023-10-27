@@ -11,14 +11,14 @@ import 'map_page_wm.dart';
 // TODO: cover with documentation
 /// Main widget for ProfilePage module
 @RoutePage()
-class MapPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
+class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
   const MapPageWidget({
     Key? key,
     WidgetModelFactory wmFactory = defaultMapPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
   @override
-  Widget build(IOrderingPageWidgetModel wm) {
+  Widget build(IMapPageWidgetModel wm) {
     final theme = wm.theme;
     final textTheme = wm.textTheme;
     final colorTheme = wm.colorScheme;
@@ -32,7 +32,6 @@ class MapPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
             builder: (context, profileSnapshot) {
               final isLogin = profileSnapshot.hasData &&
                   profileSnapshot.data!.email.isNotEmpty;
-              final profile = profileSnapshot.data;
               return Column(
                 children: [
                   if (!isLogin)

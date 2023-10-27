@@ -13,7 +13,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'map_page_model.dart';
 import 'map_page_widget.dart';
 
-abstract class IOrderingPageWidgetModel extends IWidgetModel
+abstract class IMapPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   AuthRepository get authRepository;
 
@@ -31,18 +31,18 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
 
 }
 
-OrderingPageWidgetModel defaultMapPageWidgetModelFactory(
+MapPageWidgetModel defaultMapPageWidgetModelFactory(
     BuildContext context) {
-  return OrderingPageWidgetModel(MapPageModel());
+  return MapPageWidgetModel(MapPageModel());
 }
 
 // TODO: cover with documentation
 /// Default widget model for ProfilePageWidget
-class OrderingPageWidgetModel
+class MapPageWidgetModel
     extends WidgetModel<MapPageWidget, MapPageModel>
     with ThemeProvider
-    implements IOrderingPageWidgetModel {
-  OrderingPageWidgetModel(MapPageModel model) : super(model);
+    implements IMapPageWidgetModel {
+  MapPageWidgetModel(MapPageModel model) : super(model);
   @override
   final profileUseCase = AppComponents().profileUseCase;
 
