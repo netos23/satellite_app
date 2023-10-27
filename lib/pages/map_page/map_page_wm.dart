@@ -1,10 +1,11 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
-import 'package:satellite_app/domain/entity/geozones/geozone.dart';
 import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/pages/map_page/map_controller.dart';
+import 'package:satellite_app/pages/map_page/map_layers.dart';
+import 'package:satellite_app/pages/map_page/map_overlay.dart';
+import 'package:satellite_app/pages/map_page/map_settings_page_widget.dart';
 import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 
@@ -13,15 +14,9 @@ import 'map_page_widget.dart';
 
 abstract class IMapPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
-  BehaviorSubject<(Set<Polygon>, bool)> get poliygonController;
+  MapOverlayController get mapOverlayController;
 
-  void onMapCreated(GoogleMapController controller);
-
-  Future<void> openSettings();
-
-  void zoomIn();
-
-  void zoomOut();
+  void onMapCreated(MapController controller);
 
   void addPoint();
 }
@@ -37,6 +32,16 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     implements IMapPageWidgetModel {
   MapPageWidgetModel(MapPageModel model) : super(model);
 
+  @override
+  late final mapOverlayController = MapOverlayController([
+    MapOverlayEntry(
+      id: MapLayers.settings,
+      builder: (_) => MapSettingsPageWidget(
+        controller: () => controller,
+      ),
+    )
+  ]);
+
   final profileUseCase = AppComponents().profileUseCase;
 
   bool get isUnauthorisedUser =>
@@ -47,7 +52,7 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     AppComponents().authService,
   );
 
-  GoogleMapController? controller;
+  MapController? controller;
 
   @override
   void initWidgetModel() {
@@ -58,13 +63,11 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
   Future<void> _initPoligons() async {
     final zones = await AppComponents().geozonesRepository.getDeprecated();
     final zonesPub = await AppComponents().geozonesRepository.getZones();
-    final set1 = _mapPolygones(zonesPub, colorScheme.primary);
-    final set2 = _mapPolygones(zones, colorScheme.tertiary);
-    final res = <Polygon>{};
-    res.addAll(set2);
-    res.addAll(set1);
-    poliygonController.add((res, true));
+/*    final set1 = _mapPolygones(zonesPub, colorScheme.primary);
+    final set2 = _mapPolygones(zones, colorScheme.tertiary);*/
   }
+
+/*
 
   Set<Polygon> _mapPolygones(List<Geozone> zones, Color color) {
     return zones
@@ -88,27 +91,11 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
         )
         .toSet();
   }
+*/
 
   @override
-  void onMapCreated(GoogleMapController controller) {
+  void onMapCreated(MapController controller) {
     this.controller = controller;
-  }
-
-  @override
-  Future<void> openSettings() async {}
-
-  @override
-  void zoomIn() {
-    controller?.animateCamera(
-      CameraUpdate.zoomIn(),
-    );
-  }
-
-  @override
-  void zoomOut() {
-    controller?.animateCamera(
-      CameraUpdate.zoomOut(),
-    );
   }
 
   @override
@@ -118,10 +105,7 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
 
   @override
   void dispose() {
-    poliygonController.close();
+    controller = null;
     super.dispose();
   }
-
-  @override
-  final poliygonController = BehaviorSubject<(Set<Polygon>, bool)>();
 }

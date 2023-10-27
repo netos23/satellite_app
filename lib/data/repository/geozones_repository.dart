@@ -4,6 +4,7 @@ import 'package:satellite_app/data/service/satellite_service.dart';
 import 'package:satellite_app/domain/entity/geozones/geozone.dart';
 import 'package:satellite_app/domain/entity/satellite/satellite.dart';
 
+@Deprecated('Unrestricted use models')
 class GeozonesRepository {
   GeozonesRepository(
       this._geozonesService,
