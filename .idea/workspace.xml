@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="feature(config project)">
       <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/splash.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/splash_screen.jpg" afterDir="false" />
@@ -60,6 +61,15 @@
       <change beforePath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/router/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
+=======
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/dron_delivery_app_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/dron_delivery_app_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -94,13 +104,18 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+<<<<<<< Updated upstream
     "flutter.view.tool.window.visible": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/android/app/src/main/res/drawable-hdpi",
+=======
+    "last_opened_file_path": "/Users/nikitamorozov/Work/dron_delivery_app",
+>>>>>>> Stashed changes
     "settings.editor.selected.configurable": "AndroidSdkUpdater",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+<<<<<<< Updated upstream
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi" />
@@ -117,6 +132,8 @@
       <recent name="$PROJECT_DIR$/android/app/src/main/res" />
     </key>
   </component>
+=======
+>>>>>>> Stashed changes
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "412558007321",
+    "project_id": "profession-it",
+    "storage_bucket": "profession-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412558007321:android:c9d07a3d1b20cd12891e88",
+        "android_client_info": {
+          "package_name": "com.example.dron_delivery_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLh16Thf_2_z2YmgXrFo0aBgBhGyF0UN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412558007321:android:942fb2fa71207dfe891e88",
+        "android_client_info": {
+          "package_name": "com.example.satellite_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLh16Thf_2_z2YmgXrFo0aBgBhGyF0UN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
