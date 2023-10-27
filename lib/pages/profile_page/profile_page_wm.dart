@@ -23,10 +23,6 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
 
   void linkToTelegram();
 
-  TextEditingController get brandController;
-
-  TextEditingController get addressController;
-
   BehaviorSubject<Profile?> get profileController;
 }
 

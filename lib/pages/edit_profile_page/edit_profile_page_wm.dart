@@ -115,6 +115,11 @@ class EditProfilePageWidgetModel
 
   @override
   void dispose() {
+    emailController.dispose();
+    firstNameController.dispose();
+    secondNameController.dispose();
+    phoneNumber.dispose();
+    bitrhdayController.dispose();
     genderController.close();
     profileController.close();
     super.dispose();

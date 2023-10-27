@@ -14,7 +14,6 @@ import 'register_page_widget.dart';
 
 abstract class IRegisterPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
-  ValueStreamWrapper<bool> get isFarmer;
 
   ValueStreamWrapper<String> get genderController;
 
@@ -79,7 +78,7 @@ class RegisterPageWidgetModel
         phone: phoneNumber.text,
         birthDate: bitrhdayController.text,
         gender: genderController.value,
-        role: (isFarmer.valueOrNull ?? false) ? 'farmer' : 'client');
+       );
 
     try {
       await authRepository.register(profile: request);
@@ -104,14 +103,10 @@ class RegisterPageWidgetModel
     secondNameController.dispose();
     emailController.dispose();
     genderController.dispose();
-    isFarmer.dispose();
     bitrhdayController.dispose();
     super.dispose();
   }
 
   @override
   ValueStreamWrapper<String> genderController = ValueStreamWrapper();
-
-  @override
-  ValueStreamWrapper<bool> isFarmer = ValueStreamWrapper();
 }

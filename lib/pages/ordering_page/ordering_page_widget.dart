@@ -27,159 +27,134 @@ class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
       builder: (context) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Заказ'),
+            title: const Text('Оформление заказа'),
             centerTitle: true,
-            actions: const [
-              ThemeSwitch(),
-            ],
           ),
-          body: StreamBuilder<Profile?>(
-            initialData: wm.profileUseCase.profile.valueOrNull,
-            stream: wm.profileUseCase.profile.stream,
-            builder: (context, profileSnapshot) {
-              final isLogin = profileSnapshot.hasData &&
-                  profileSnapshot.data!.email.isNotEmpty;
-              final profile = profileSnapshot.data;
-              final isFarmer = profileSnapshot.hasData &&
-                  profileSnapshot.data!.role == 'farmer';
-              final hasNotBrand = profileSnapshot.data?.brand == null ||
-                  (profileSnapshot.data?.brand ?? '').isEmpty;
-              final userImage = getUserImage(gender: profile?.gender);
-              return Column(
-                children: [
-                  if (!isLogin)
-                    Expanded(
-                      child: Text(
-                        'Необходима авторизация',
-                        textAlign: TextAlign.center,
-                        style: textTheme.bodyLarge?.copyWith(
-                          color: colorTheme.onBackground,
-                        ),
-                      ),
-                    ),
-                  const Spacer(),
-                  Container(
+          body:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: ListView(
+              children: [
+                Card(
+                  child: Padding(
                     padding: const EdgeInsets.all(16),
-                    height: 82,
-                    child: FilledButton(
-                      style: theme.filledButtonTheme.style?.copyWith(
-                        fixedSize: const MaterialStatePropertyAll(
-                          Size.fromHeight(50),
+                    child: Column(
+                      children: [
+                        TextField(
+                          textAlign: TextAlign.center,
+                          controller: wm.firstNameController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Имя',
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        if (!isLogin) {
-                          context.router.push(AuthRoute());
-                        } else {
-                          wm.profileUseCase.logout();
-                        }
-                      },
-                      child: Center(
-                        child: !isLogin
-                            ? const Text('Заказать')
-                            : const Text('Заказать'),
-                      ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          textAlign: TextAlign.center,
+                          controller: wm.secondNameController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Фамилия',
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          textAlign: TextAlign.center,
+                          controller: wm.emailController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        TextField(
+                          textAlign: TextAlign.center,
+                          controller: wm.phoneNumberController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Номер телефона',
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              );
-            },
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        const Text('Настройки съемки:'),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          child: const Row(
+                            children: [
+                              Text('Дата начала'),
+                              Spacer(),
+                              Icon(Icons.settings_outlined),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          child: const Row(
+                            children: [
+                              Text('Дата окончания:'),
+                              Spacer(),
+                              Icon(Icons.settings_outlined),
+                            ],
+                          ),
+                        ),
+                        const Text('Количество мегапикселей:'),
+                      ],
+                    ),
+                  ),
+                ),
+                //const Spacer(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: SizedBox(
+                    height: 50,
+                    child: FilledButton(
+                      style: theme.filledButtonTheme.style?.copyWith(
+                          fixedSize:
+                          const MaterialStatePropertyAll(Size.fromHeight(50))),
+                      onPressed: wm.profileUseCase.logout,
+                      child: const Center(child: Text('Разлогиниться')),
+                    ),
+                  ),
+                ),
+
+              ],
+            ),
           ),
         );
       },
-    );
-  }
-
-  String getUserImage({String? gender}) {
-    if (gender == 'unknown' || gender == 'female') {
-      return 'assets/images/girl.png';
-    } else {
-      return 'assets/images/man.png';
-    }
-  }
-}
-
-class SliverProfileGrid extends StatelessWidget {
-  const SliverProfileGrid({
-    Key? key,
-    required this.profileCards,
-  }) : super(key: key);
-  final List<ProfileCard> profileCards;
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      sliver: SliverGrid(
-        delegate: SliverChildListDelegate(
-          profileCards,
-        ),
-        gridDelegate: kIsWeb
-            ? const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 300,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1,
-              )
-            : const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 10,
-                childAspectRatio: 1,
-              ),
-      ),
-    );
-  }
-}
-
-class ProfileCard extends StatelessWidget {
-  final String image;
-  final String title;
-  final void Function() onTap;
-
-  const ProfileCard({
-    Key? key,
-    required this.image,
-    required this.title,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    final colorTheme = Theme.of(context).colorScheme;
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Stack(children: [
-          // Positioned.fill(
-          //   child: Padding(
-          //     padding: const EdgeInsets.fromLTRB(32, 20, 32, 32),
-          //     child: Image.asset(
-          //       image,
-          //       fit: BoxFit.contain,
-          //     ),
-          //   ),
-          // ),
-          Positioned(
-            left: 16,
-            right: 16,
-            bottom: 8,
-            child: Text(
-              title,
-              maxLines: 3,
-              textAlign: TextAlign.center,
-              style: textTheme.bodyLarge?.copyWith(
-                color: colorTheme.onBackground,
-              ),
-            ),
-          )
-        ]),
-      ),
     );
   }
 }

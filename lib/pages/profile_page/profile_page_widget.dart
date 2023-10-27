@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/pages/components/theme_switch.dart';
 import 'package:satellite_app/router/app_router.dart';
@@ -21,8 +20,6 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
   @override
   Widget build(IProfilePageWidgetModel wm) {
     final theme = wm.theme;
-    final textTheme = wm.textTheme;
-    final colorTheme = wm.colorScheme;
 
     return Builder(
       builder: (context) {

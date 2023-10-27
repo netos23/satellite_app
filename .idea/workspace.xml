@@ -5,11 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="feature(add map screen)">
-      <change beforePath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/repository/geozones_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/repository/satellite_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/service/geozones_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/service/satellite_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/data/service/satellite_service.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/geozones/geozone.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/satellite/satellite.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/satellite/satellite.freezed.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/domain/entity/satellite/satellite.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/internal/app_components.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app_components.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/register_page/register_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_wm.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698407495481</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feature(add map screen)">
+      <created>1698407853246</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698407853246</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,13 +196,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart</url>
-          <line>42</line>
+          <line>39</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart</url>
-          <line>38</line>
+          <line>35</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart</url>
+          <line>109</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

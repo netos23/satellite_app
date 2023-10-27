@@ -3,7 +3,9 @@ import 'package:elementary/elementary.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
+import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
 import 'package:satellite_app/router/app_router.dart';
@@ -19,15 +21,15 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
 
   ProfileUseCase get profileUseCase;
 
-  void onEditProfileTap();
+  TextEditingController get firstNameController;
 
-  void onCalendarTap();
+  TextEditingController get secondNameController;
 
-  void linkToTelegram();
+  TextEditingController get emailController;
 
-  TextEditingController get brandController;
+  TextEditingController get phoneNumberController;
 
-  TextEditingController get addressController;
+  BehaviorSubject<Profile?> get profileController;
 
 }
 
@@ -46,6 +48,21 @@ class OrderingPageWidgetModel
   @override
   final profileUseCase = AppComponents().profileUseCase;
 
+  @override
+  final emailController = TextEditingController();
+
+  @override
+  final firstNameController = TextEditingController();
+
+  @override
+  final profileController = BehaviorSubject();
+
+  @override
+  final secondNameController = TextEditingController();
+
+  @override
+  final phoneNumberController = TextEditingController();
+
   bool get isUnauthorisedUser =>
       profileUseCase.profile.valueOrNull == null ||
       (profileUseCase.profile.value!.email ?? '').isEmpty;
@@ -53,220 +70,41 @@ class OrderingPageWidgetModel
   bool get isClientUser =>
       profileUseCase.profile.valueOrNull?.role != 'farmer';
 
-  final telegramLink =
-      'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
-
   @override
   void initWidgetModel() {
     super.initWidgetModel();
+    if (profileController.valueOrNull != null) {
+      profileController.add(profileUseCase.profile.value);
+    }
+
+    profileUseCase.profile.stream.listen((event) {
+      profileController.add(event);
+    });
+
     if (profileUseCase.profile.valueOrNull == null) {
       profileUseCase.loadProfile();
     }
+
+    final profile = profileUseCase.profile.valueOrNull;
+
+    emailController.text = profile?.email ?? '';
+    firstNameController.text = profile?.firstName ?? '';
+    secondNameController.text = profile?.secondName ?? '';
+    phoneNumberController.text = profile?.phone ?? '';
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    firstNameController.dispose();
+    secondNameController.dispose();
+    phoneNumberController.dispose();
+    profileController.close();
+    super.dispose();
   }
 
   @override
   AuthRepository authRepository = AuthRepository(
     AppComponents().authService,
   );
-
-
-  @override
-  void onCalendarTap() {
-    onUnauthorisedTap(() {
-      onClientTap(() {
-        () async {
-          if(kIsWeb){
-            context.showSnackBar(
-              'ПОддерживается только в мобильном приложение',
-            );
-            return;
-          }
-
-          final resp = await AppComponents().dio.get('/subscriptions/calendar');
-          context.showSnackBar(
-            'Возникли проблемы при сохранении файла',
-          );
-        };
-      });
-    });
-  }
-
-  Widget _buildClientContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Данный раздел доступен только пользователям, зарегистрированным в качестве фермера. Чтобы стать фермером - перейдите в раздел "Мои данные" и измените свой статус',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        Column(
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                    context.pushRoute(EditProfileRoute());
-                  },
-                  child: const Center(
-                    child: Text('Become a farmer'),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  child: const Center(
-                    child: Text('Позже'),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
-
-  @override
-  void onUnauthorisedTap(void Function() onTap) {
-    if (isUnauthorisedUser) {
-      showModalBottomSheet(
-        context: router.root.navigatorKey.currentContext!,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(25),
-            topLeft: Radius.circular(25),
-          ),
-        ),
-        builder: _buildUnauthorisedContent,
-      );
-    } else {
-      onTap();
-    }
-  }
-
-  @override
-  void linkToTelegram() {
-    launchUrlString(profileUseCase.profile.value?.tgChatStartLink ?? '',
-        mode: LaunchMode.externalApplication);
-  }
-
-  @override
-  void onClientTap(void Function() onTap) {
-    if (isClientUser) {
-      showModalBottomSheet(
-        context: router.root.navigatorKey.currentContext!,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(25),
-            topLeft: Radius.circular(25),
-          ),
-        ),
-        builder: _buildClientContent,
-      );
-    } else {
-      onTap();
-    }
-  }
-
-  @override
-  void onEditProfileTap() {
-    onUnauthorisedTap(() {
-      router.push(EditProfileRoute(profile: profileUseCase.profile.value));
-    });
-  }
-
-  Widget _buildUnauthorisedContent(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32),
-          child: Text(
-            'Данный раздел доступен только авторизованным пользователям, войдите или зарегистрируйтесь',
-            maxLines: 6,
-            style: theme.textTheme.bodyLarge?.copyWith(
-                color: theme.colorScheme.onSurface,
-                overflow: TextOverflow.ellipsis),
-          ),
-        ),
-        Column(
-          children: [
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                   // context.pushRoute(AuthRoute());
-                  },
-                  child: const Center(
-                    child: Text('Войти'),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                margin: const EdgeInsets.symmetric(vertical: 16),
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize: const MaterialStatePropertyAll(
-                      Size.fromHeight(50),
-                    ),
-                  ),
-                  onPressed: () {
-                    context.popRoute();
-                  },
-                  child: const Center(
-                    child: Text('Позже'),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  @override
-  final addressController = TextEditingController();
-
-  @override
-  final brandController = TextEditingController();
 }
