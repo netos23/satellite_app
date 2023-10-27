@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'satellite_service.dart';
+part of 'order_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'satellite_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _SatelliteService implements SatelliteService {
-  _SatelliteService(
+class _OrderService implements OrderService {
+  _OrderService(
     this._dio, {
     this.baseUrl,
   });
@@ -19,26 +19,50 @@ class _SatelliteService implements SatelliteService {
   String? baseUrl;
 
   @override
-  Future<List<SatelliteDto>> getSatellites() async {
+  Future<Order> postOrder({required Order request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<SatelliteDto>>(Options(
-      method: 'GET',
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Order>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/satellites/',
+              '/order/',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Order.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<List<Tarif>> getTarifs() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Tarif>>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/order/tarifs/',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!
-        .map((dynamic i) => SatelliteDto.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Tarif.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }

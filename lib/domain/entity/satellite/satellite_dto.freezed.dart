@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'satellite.dart';
+part of 'satellite_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,35 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Satellite _$SatelliteFromJson(Map<String, dynamic> json) {
+SatelliteDto _$SatelliteDtoFromJson(Map<String, dynamic> json) {
   return _Satellite.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Satellite {
-  String get id => throw _privateConstructorUsedError;
+mixin _$SatelliteDto {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get picture => throw _privateConstructorUsedError;
   double get resolution => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SatelliteCopyWith<Satellite> get copyWith =>
+  $SatelliteDtoCopyWith<SatelliteDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SatelliteCopyWith<$Res> {
-  factory $SatelliteCopyWith(Satellite value, $Res Function(Satellite) then) =
-      _$SatelliteCopyWithImpl<$Res, Satellite>;
+abstract class $SatelliteDtoCopyWith<$Res> {
+  factory $SatelliteDtoCopyWith(
+          SatelliteDto value, $Res Function(SatelliteDto) then) =
+      _$SatelliteDtoCopyWithImpl<$Res, SatelliteDto>;
   @useResult
-  $Res call({String id, String name, String picture, double resolution});
+  $Res call({int id, String name, String picture, double resolution});
 }
 
 /// @nodoc
-class _$SatelliteCopyWithImpl<$Res, $Val extends Satellite>
-    implements $SatelliteCopyWith<$Res> {
-  _$SatelliteCopyWithImpl(this._value, this._then);
+class _$SatelliteDtoCopyWithImpl<$Res, $Val extends SatelliteDto>
+    implements $SatelliteDtoCopyWith<$Res> {
+  _$SatelliteDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -61,7 +62,7 @@ class _$SatelliteCopyWithImpl<$Res, $Val extends Satellite>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -80,18 +81,18 @@ class _$SatelliteCopyWithImpl<$Res, $Val extends Satellite>
 
 /// @nodoc
 abstract class _$$SatelliteImplCopyWith<$Res>
-    implements $SatelliteCopyWith<$Res> {
+    implements $SatelliteDtoCopyWith<$Res> {
   factory _$$SatelliteImplCopyWith(
           _$SatelliteImpl value, $Res Function(_$SatelliteImpl) then) =
       __$$SatelliteImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String picture, double resolution});
+  $Res call({int id, String name, String picture, double resolution});
 }
 
 /// @nodoc
 class __$$SatelliteImplCopyWithImpl<$Res>
-    extends _$SatelliteCopyWithImpl<$Res, _$SatelliteImpl>
+    extends _$SatelliteDtoCopyWithImpl<$Res, _$SatelliteImpl>
     implements _$$SatelliteImplCopyWith<$Res> {
   __$$SatelliteImplCopyWithImpl(
       _$SatelliteImpl _value, $Res Function(_$SatelliteImpl) _then)
@@ -109,7 +110,7 @@ class __$$SatelliteImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -139,7 +140,7 @@ class _$SatelliteImpl implements _Satellite {
       _$$SatelliteImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
   final String name;
   @override
@@ -149,7 +150,7 @@ class _$SatelliteImpl implements _Satellite {
 
   @override
   String toString() {
-    return 'Satellite(id: $id, name: $name, picture: $picture, resolution: $resolution)';
+    return 'SatelliteDto(id: $id, name: $name, picture: $picture, resolution: $resolution)';
   }
 
   @override
@@ -182,9 +183,9 @@ class _$SatelliteImpl implements _Satellite {
   }
 }
 
-abstract class _Satellite implements Satellite {
+abstract class _Satellite implements SatelliteDto {
   factory _Satellite(
-      {required final String id,
+      {required final int id,
       required final String name,
       required final String picture,
       required final double resolution}) = _$SatelliteImpl;
@@ -193,7 +194,7 @@ abstract class _Satellite implements Satellite {
       _$SatelliteImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
   String get name;
   @override

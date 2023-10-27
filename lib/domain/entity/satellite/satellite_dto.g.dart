@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'satellite.dart';
+part of 'satellite_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -8,7 +8,7 @@ part of 'satellite.dart';
 
 _$SatelliteImpl _$$SatelliteImplFromJson(Map<String, dynamic> json) =>
     _$SatelliteImpl(
-      id: json['id'] as String,
+      id: json['id'] as int,
       name: json['name'] as String,
       picture: json['picture'] as String,
       resolution: (json['resolution'] as num).toDouble(),
