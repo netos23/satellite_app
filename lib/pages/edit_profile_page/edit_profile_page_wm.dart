@@ -15,7 +15,7 @@ import 'edit_profile_page_widget.dart';
 
 abstract class IEditProfilePageWidgetModel extends IWidgetModel
     implements IThemeProvider {
-  ValueStreamWrapper<String?> get genderController;
+  BehaviorSubject<String?> get genderController;
 
   ProfileUseCase get profileUseCase;
 
@@ -63,7 +63,7 @@ class EditProfilePageWidgetModel
   final secondNameController = TextEditingController();
 
   @override
-  ValueStreamWrapper<String?> genderController = ValueStreamWrapper();
+  BehaviorSubject<String?> genderController = BehaviorSubject();
 
   @override
   BehaviorSubject<Profile?> profileController = BehaviorSubject<Profile?>();
@@ -106,14 +106,7 @@ class EditProfilePageWidgetModel
 
     try {
       await profileUseCase.patchProfile(request);
-      router.push(
-        AuthCodeRoute(email: request.email),
-      );
     } on DioException catch (error) {
-      if (error.response?.statusCode == 403) {
-        context.showSnackBar('Пользователь уже зарегистрирован');
-        return;
-      }
       throw Exception(
         error.response?.data['message'],
       );
@@ -122,7 +115,7 @@ class EditProfilePageWidgetModel
 
   @override
   void dispose() {
-    genderController.dispose();
+    genderController.close();
     profileController.close();
     super.dispose();
   }

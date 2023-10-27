@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'edit_profile_page_wm.dart';
 
@@ -30,25 +29,13 @@ class EditProfilePageWidget
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: StreamBuilder<Profile?>(
-          stream: wm.profileController,
-            initialData: wm.profileController.valueOrNull,
-            builder: (context, snapshot) {
-            return Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        'Фамилия Имя',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
                     TextField(
                       textAlign: TextAlign.center,
                       controller: wm.firstNameController,
@@ -56,19 +43,13 @@ class EditProfilePageWidget
                         color: theme.colorScheme.onBackground,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Имя',
+                      ),
                     ),
                     const SizedBox(
                       height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(
-                        'Фамилия Имя',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                     ),
                     TextField(
                       textAlign: TextAlign.center,
@@ -77,19 +58,13 @@ class EditProfilePageWidget
                         color: theme.colorScheme.onBackground,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Фамилия',
+                      ),
                     ),
                     const SizedBox(
                       height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Text(
-                        'Email',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                     ),
                     TextField(
                       textAlign: TextAlign.center,
@@ -98,40 +73,13 @@ class EditProfilePageWidget
                         color: theme.colorScheme.onBackground,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Text(
-                        'Дата рождения',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    TextField(
-                      textAlign: TextAlign.center,
-                      controller: wm.bitrhdayController,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: theme.colorScheme.onBackground,
-                        overflow: TextOverflow.ellipsis,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Email',
                       ),
                     ),
                     const SizedBox(
                       height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Text(
-                        'Номер телефона',
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
                     ),
                     TextField(
                       textAlign: TextAlign.center,
@@ -140,105 +88,92 @@ class EditProfilePageWidget
                         color: theme.colorScheme.onBackground,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Номер телефона',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    TextField(
+                      textAlign: TextAlign.center,
+                      controller: wm.bitrhdayController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Дата рождения',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    StreamBuilder<String?>(
+                        stream: wm.genderController.stream,
+                        initialData: '',
+                        builder: (context, genderSnapshot) {
+                          return Row(
+                            children: [
+                              Flexible(
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: _GenderCheckbox.male(
+                                    value: genderSnapshot.data == 'male',
+                                    onChanged: () {
+                                      wm.genderController.add('male');
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: _GenderCheckbox.female(
+                                    value: genderSnapshot.data == 'female',
+                                    onChanged: () {
+                                      wm.genderController.add('female');
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        }),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    OutlinedButton(
+                      style: theme.filledButtonTheme.style?.copyWith(
+                          fixedSize:
+                          const MaterialStatePropertyAll(Size.fromHeight(50))),
+                      onPressed: wm.onEditProfile,
+                      child: const Center(child: Text('Сохранить')),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 16,
+              ),
+            ),
+            //const Spacer(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                height: 50,
+                child: FilledButton(
+                  style: theme.filledButtonTheme.style?.copyWith(
+                      fixedSize:
+                      const MaterialStatePropertyAll(Size.fromHeight(50))),
+                  onPressed: wm.profileUseCase.logout,
+                  child: const Center(child: Text('Разлогиниться')),
                 ),
-                StreamBuilder<String?>(
-                    stream: wm.genderController.stream,
-                    builder: (context, genderSnapshot) {
-                      return Row(
-                        children: [
-                          _GenderCheckbox.male(
-                            value: genderSnapshot.data == 'male',
-                            onChanged: () {
-                              wm.genderController.add('male');
-                            },
-                          ),
-                          const SizedBox(width: 32),
-                          _GenderCheckbox.female(
-                            value: genderSnapshot.data == 'female',
-                            onChanged: () {
-                              wm.genderController.add('female');
-                            },
-                          ),
-                        ],
-                      );
-                    }),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  height: 50,
-                  child: FilledButton(
-                    style: theme.filledButtonTheme.style?.copyWith(
-                        fixedSize:
-                            const MaterialStatePropertyAll(Size.fromHeight(50))),
-                    onPressed: wm.onEditProfile,
-                    child: const Center(
-                      child: Text('Сохранить'),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          }
+              ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
-}
-
-class _FarmerCheckbox extends StatelessWidget {
-  const _FarmerCheckbox({
-    required this.value,
-    required this.onChanged,
-    required this.text,
-    Key? key,
-  }) : super(key: key);
-
-  final bool value;
-  final void Function() onChanged;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: onChanged,
-      child: Row(
-        children: [
-          Container(
-            height: 18,
-            width: 18,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: value ? theme.hintColor : theme.focusColor,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.zero,
-            ),
-            child: Center(
-              child: Visibility(
-                visible: value,
-                child: SvgPicture.asset(
-                  'assets/svg/size_done.svg',
-                  height: 12,
-                  width: 12,
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 13,
-          ),
-          Text(
-            text,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        ],
       ),
     );
   }
@@ -278,22 +213,27 @@ class _GenderCheckbox extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: 18,
-            width: 18,
+            height: 24,
+            width: 24,
             decoration: BoxDecoration(
               border: Border.all(
-                color: value ? theme.hintColor : theme.focusColor,
+                color: value ? theme.hintColor : theme.primaryColor,
                 width: 1,
               ),
-              borderRadius: BorderRadius.zero,
+              borderRadius: BorderRadius.circular(12),
             ),
-            child: Center(
-              child: Visibility(
-                visible: value,
-                child: SvgPicture.asset(
-                  'assets/svg/size_done.svg',
-                  height: 12,
-                  width: 12,
+            child: Visibility(
+              visible: value,
+              child: Container(
+                height: 22,
+                width: 22,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: theme.primaryColor,
+                  border:  Border.all(
+                    color: Colors.white,
+                    width: 1,
+                  ),
                 ),
               ),
             ),
@@ -302,8 +242,11 @@ class _GenderCheckbox extends StatelessWidget {
             width: 13,
           ),
           Text(
-            gender == 'male' ? 'Муж' : 'Жен',
-            style: Theme.of(context).textTheme.bodyMedium,
+            gender == 'male' ? 'Мужской' : 'Женский',
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

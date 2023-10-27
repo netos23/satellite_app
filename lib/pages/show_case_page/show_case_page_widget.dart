@@ -23,7 +23,6 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        bottomOpacity: 0.5,
         leading: Padding(
           padding: const EdgeInsets.only(left: 8),
           child: Image.asset(

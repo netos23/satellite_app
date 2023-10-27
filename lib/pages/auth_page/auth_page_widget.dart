@@ -29,33 +29,28 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 16.0),
-                  child: Text(
-                    'Email',
-                    style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onBackground,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-                TextField(
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32,),
+                child: TextField(
                   textAlign: TextAlign.center,
                   controller: wm.emailController,
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: theme.colorScheme.onBackground,
                     overflow: TextOverflow.ellipsis,
                   ),
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),
                 ),
-              ],
+              ),
             ),
-            SizedBox(
-              height: 50,
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              height: 82,
               child: FilledButton(
                 style: theme.filledButtonTheme.style?.copyWith(
                     fixedSize:

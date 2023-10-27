@@ -4,64 +4,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="feature(config project)">
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-ldpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-ldpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-mdpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-mdpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xhdpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xhdpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/splash.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/splash_screen.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart" afterDir="false" />
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(ordering screen view)">
+      <change afterPath="$PROJECT_DIR$/assets/images/logo_large.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/svg/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/internal/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/internal/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_wm.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/home_page/home_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/register_page/register_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_wm.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router/app_router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/router/app_router.gr.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/router/app_router.gr.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +49,6 @@
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
-    "flutter.view.tool.window.visible": "true",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/android/app/src/main/res/drawable-hdpi",
     "settings.editor.selected.configurable": "AndroidSdkUpdater",
@@ -110,11 +64,11 @@
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/svg" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-v21" />
-      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/ios/Runner/Assets.xcassets" />
-      <recent name="$PROJECT_DIR$/android/app/src/main/res" />
     </key>
   </component>
   <component name="RunManager">
@@ -146,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698342373483</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix(ordering screen view)">
+      <created>1698388051458</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698388051458</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,35 +124,56 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="routing and pages" />
     <MESSAGE value="feature(config project)" />
-    <option name="LAST_COMMIT_MESSAGE" value="feature(config project)" />
+    <MESSAGE value="fix(ordering screen view)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(ordering screen view)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/main.dart</url>
-          <line>12</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/util/lifecycle_component.dart</url>
           <line>7</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart</url>
-          <line>67</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/lib/domain/use_case/profile_use_case.dart</url>
+          <line>51</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart</url>
-          <line>63</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/lib/domain/use_case/profile_use_case.dart</url>
+          <line>50</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart</url>
-          <line>71</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart</url>
+          <line>76</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart</url>
+          <line>80</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart</url>
+          <line>84</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart</url>
+          <line>138</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart</url>
+          <line>42</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart</url>
+          <line>38</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
