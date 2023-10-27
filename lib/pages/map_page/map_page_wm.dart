@@ -10,8 +10,8 @@ import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'ordering_page_model.dart';
-import 'ordering_page_widget.dart';
+import 'map_page_model.dart';
+import 'map_page_widget.dart';
 
 abstract class IOrderingPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
@@ -31,18 +31,18 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
 
 }
 
-OrderingPageWidgetModel defaultOrderingPageWidgetModelFactory(
+OrderingPageWidgetModel defaultMapPageWidgetModelFactory(
     BuildContext context) {
-  return OrderingPageWidgetModel(OrderingPageModel());
+  return OrderingPageWidgetModel(MapPageModel());
 }
 
 // TODO: cover with documentation
 /// Default widget model for ProfilePageWidget
 class OrderingPageWidgetModel
-    extends WidgetModel<OrderingPageWidget, OrderingPageModel>
+    extends WidgetModel<MapPageWidget, MapPageModel>
     with ThemeProvider
     implements IOrderingPageWidgetModel {
-  OrderingPageWidgetModel(OrderingPageModel model) : super(model);
+  OrderingPageWidgetModel(MapPageModel model) : super(model);
   @override
   final profileUseCase = AppComponents().profileUseCase;
 

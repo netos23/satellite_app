@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(ordering screen view)">
-      <change afterPath="$PROJECT_DIR$/assets/images/logo_large.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/svg/logo.svg" afterDir="false" />
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(auth screen update)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_code_page/auth_code_page_wm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_wm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/profile_page/profile_page_wm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/show_case_page/show_case_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/map_page/ordering_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/map_page/map_page_wm.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,18 +43,18 @@
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/android/app/src/main/res/drawable-hdpi",
+    "last_opened_file_path": "/Users/air/StudioProjects/hack/satellite_app/lib/pages/map_page",
     "settings.editor.selected.configurable": "AndroidSdkUpdater",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/pages/map_page" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-v21" />
       <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi" />
-      <recent name="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/images" />
@@ -107,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698388051458</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix(auth screen update)">
+      <created>1698406031080</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698406031080</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,7 +125,8 @@
     <MESSAGE value="routing and pages" />
     <MESSAGE value="feature(config project)" />
     <MESSAGE value="fix(ordering screen view)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(ordering screen view)" />
+    <MESSAGE value="fix(auth screen update)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(auth screen update)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
