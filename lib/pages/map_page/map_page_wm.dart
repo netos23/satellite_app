@@ -1,8 +1,9 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
-import 'package:satellite_app/domain/use_case/profile_use_case.dart';
+import 'package:satellite_app/domain/entity/geozones/geozone.dart';
 import 'package:satellite_app/internal/app_components.dart';
 import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
@@ -12,13 +13,7 @@ import 'map_page_widget.dart';
 
 abstract class IMapPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
-  AuthRepository get authRepository;
-
-  ProfileUseCase get profileUseCase;
-
-  TextEditingController get brandController;
-
-  TextEditingController get addressController;
+  BehaviorSubject<(Set<Polygon>, bool)> get poliygonController;
 
   void onMapCreated(GoogleMapController controller);
 
@@ -41,37 +36,57 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     with ThemeProvider
     implements IMapPageWidgetModel {
   MapPageWidgetModel(MapPageModel model) : super(model);
-  @override
+
   final profileUseCase = AppComponents().profileUseCase;
 
   bool get isUnauthorisedUser =>
       profileUseCase.profile.valueOrNull == null ||
       (profileUseCase.profile.value!.email ?? '').isEmpty;
 
-  bool get isClientUser => profileUseCase.profile.valueOrNull?.role != 'farmer';
-
-  final telegramLink =
-      'https://telegram.me/MiraMessTeam_help_bot?start=w1i1zvbu9h6teeO3gR1mXxE-eZG9Pl5SFW4-vhSjNU4';
-
-  @override
   AuthRepository authRepository = AuthRepository(
     AppComponents().authService,
   );
-
-  @override
-  final addressController = TextEditingController();
-
-  @override
-  final brandController = TextEditingController();
 
   GoogleMapController? controller;
 
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    if (profileUseCase.profile.valueOrNull == null) {
-      profileUseCase.loadProfile();
-    }
+    _initPoligons();
+  }
+
+  Future<void> _initPoligons() async {
+    final zones = await AppComponents().geozonesRepository.getDeprecated();
+    final zonesPub = await AppComponents().geozonesRepository.getZones();
+    final set1 = _mapPolygones(zonesPub, colorScheme.primary);
+    final set2 = _mapPolygones(zones, colorScheme.tertiary);
+    final res = <Polygon>{};
+    res.addAll(set2);
+    res.addAll(set1);
+    poliygonController.add((res, true));
+  }
+
+  Set<Polygon> _mapPolygones(List<Geozone> zones, Color color) {
+    return zones
+        .expand((z) => z.wkt)
+        .map((p) {
+          return p.map((e) {
+            if (e.length != 2) {
+              return null;
+            }
+            return LatLng(e[1], e[0]);
+          }).whereType<LatLng>();
+        })
+        .map(
+          (e) => Polygon(
+            polygonId: PolygonId(e.hashCode.toString()),
+            fillColor: color.withOpacity(0.5),
+            strokeColor: color,
+            strokeWidth: 1,
+            points: e.toList(),
+          ),
+        )
+        .toSet();
   }
 
   @override
@@ -96,9 +111,17 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     );
   }
 
-
   @override
   void addPoint() {
     router.push(OrderingRoute());
   }
+
+  @override
+  void dispose() {
+    poliygonController.close();
+    super.dispose();
+  }
+
+  @override
+  final poliygonController = BehaviorSubject<(Set<Polygon>, bool)>();
 }

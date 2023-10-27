@@ -27,13 +27,24 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
             fit: StackFit.expand,
             children: [
               Positioned.fill(
-                child: GoogleMap(
-                  zoomControlsEnabled: false,
-                  compassEnabled: false,
-                  initialCameraPosition: const CameraPosition(
-                    target: LatLng(1231, 123),
-                  ),
-                  onMapCreated: wm.onMapCreated,
+                child: StreamBuilder(
+                  stream: wm.poliygonController,
+                  initialData: wm.poliygonController.valueOrNull,
+                  builder: (context, snapshot) {
+                    final data = snapshot.data;
+                    final enablePolygon = data?.$2 ?? false;
+                    final polygons = data?.$1 ?? {};
+
+                    return GoogleMap(
+                      zoomControlsEnabled: false,
+                      compassEnabled: false,
+                      initialCameraPosition: const CameraPosition(
+                        target: LatLng(1231, 123),
+                      ),
+                      polygons: enablePolygon ? polygons : {},
+                      onMapCreated: wm.onMapCreated,
+                    );
+                  },
                 ),
               ),
               Positioned(
@@ -59,11 +70,11 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
                 ),
               ),
               Positioned(
-                bottom: 100,
+                bottom: 30,
                 right: 16,
                 child: SizedBox(
-                  height: 110,
-                  width: 60,
+                  height: 70,
+                  width: 70,
                   child: FloatingActionButton(
                     onPressed: wm.addPoint,
                     child: const Icon(Icons.add),
