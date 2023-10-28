@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
+import 'package:satellite_app/domain/entity/order/plugin_dto.dart';
 import 'package:satellite_app/domain/entity/order/tarif.dart';
 import 'package:retrofit/http.dart';
 
@@ -16,7 +17,10 @@ abstract class OrderService {
     @Body() required Order request,
   });
 
-  @POST('/order/tarifs/')
+  @GET('/order/tarifs/')
   Future<List<Tarif>> getTarifs();
+
+  @GET('/order/plugins/')
+  Future<List<PluginDto>> getPlugins();
 
 }

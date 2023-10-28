@@ -8,6 +8,7 @@ import 'package:satellite_app/data/service/order_service.dart';
 import 'package:satellite_app/domain/entity/geozones/geozone.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
 import 'package:satellite_app/domain/entity/order/tarif.dart';
+import 'package:satellite_app/domain/models/plugin.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/domain/models/satellite.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
@@ -47,9 +48,20 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
 
   BehaviorSubject<List<Geozone>> get geozonesController;
 
+  BehaviorSubject<List<Plugin>> get pluginController;
+
   BehaviorSubject<int> get selectedTarifController;
 
+  BehaviorSubject<RangeValues> get rangeValuesController;
+
+  void selectSatellite(Satellite value);
+
+  void selectPlugin(Plugin value);
+
   void orderCreate();
+
+  void selectedTarif(Tarif? tarif);
+
 }
 
 OrderingPageWidgetModel defaultOrderingPageWidgetModelFactory(
@@ -104,7 +116,13 @@ class OrderingPageWidgetModel
   final satelliteRepository = AppComponents().satelliteRepository;
 
   @override
-  final selectedTarifController = BehaviorSubject();
+  final selectedTarifController = BehaviorSubject.seeded(1);
+
+  @override
+  final rangeValuesController = BehaviorSubject.seeded(const RangeValues(0.1, 5));
+
+  @override
+  final pluginController = BehaviorSubject();
 
   bool get isUnauthorisedUser =>
       profileUseCase.profile.valueOrNull == null ||
@@ -118,6 +136,7 @@ class OrderingPageWidgetModel
     loadSatellite();
     loadZones();
     loadTarifs();
+    loadPlugin();
 
     if (profileController.valueOrNull != null) {
       profileController.add(profileUseCase.profile.value);
@@ -150,6 +169,8 @@ class OrderingPageWidgetModel
     satelliteController.close();
     orderController.close();
     selectedTarifController.close();
+    pluginController.close();
+    tarifsController.close();
     super.dispose();
   }
 
@@ -168,13 +189,31 @@ class OrderingPageWidgetModel
     tarifsController.add(result);
   }
 
-  Future<void> selectTarif(int id) async {
+  Future<void> loadPlugin() async {
+    final result = await orderService.getPlugins();
+    pluginController.add(
+      result
+          .map(
+            (e) => Plugin(
+                id: e.id,
+                name: e.name,
+                link: e.link,
+                picture: e.picture,
+                perPhoto: e.perPhoto,
+                isSelected: false),
+          )
+          .toList(),
+    );
+  }
+
+  void selectTarif(int id) async {
     selectedTarifController.add(id);
   }
 
-  Future<void> enableSatellite(int id) async {
+  @override
+  void enableSatellite(int id) {
     final satellites = satelliteController.valueOrNull ?? [];
-    satellites
+    final newSatellites = satellites
         .map((e) => e.id == id
             ? Satellite(
                 id: e.id,
@@ -184,12 +223,13 @@ class OrderingPageWidgetModel
                 isSelected: true)
             : e)
         .toList();
-    satelliteController.add(satellites);
+    satelliteController.add(newSatellites);
   }
 
-  Future<void> disableSatellite(int id) async {
+  @override
+  void disableSatellite(int id) {
     final satellites = satelliteController.valueOrNull ?? [];
-    satellites
+    final newSatellites = satellites
         .map((e) => e.id == id
             ? Satellite(
                 id: e.id,
@@ -199,7 +239,43 @@ class OrderingPageWidgetModel
                 isSelected: false)
             : e)
         .toList();
-    satelliteController.add(satellites);
+    satelliteController.add(newSatellites);
+  }
+
+  @override
+  void enablePlugin(int id) {
+    final plugins = pluginController.valueOrNull ?? [];
+    final newPlugins = plugins
+        .map((e) => e.id == id
+            ? Plugin(
+                id: e.id,
+                name: e.name,
+                link: e.link,
+                picture: e.picture,
+                perPhoto: e.perPhoto,
+                isSelected: true,
+              )
+            : e)
+        .toList();
+    pluginController.add(newPlugins);
+  }
+
+  @override
+  void disablePlugin(int id) {
+    final plugins = pluginController.valueOrNull ?? [];
+    final newPlugins = plugins
+        .map((e) => e.id == id
+            ? Plugin(
+                id: e.id,
+                name: e.name,
+                link: e.link,
+                picture: e.picture,
+                perPhoto: e.perPhoto,
+                isSelected: false,
+              )
+            : e)
+        .toList();
+    pluginController.add(newPlugins);
   }
 
   @override
@@ -226,5 +302,31 @@ class OrderingPageWidgetModel
         ),
       );
     }
+  }
+
+  @override
+  void selectPlugin(Plugin value) {
+    if (value.isSelected == true) {
+      disablePlugin(value.id);
+    } else {
+      enablePlugin(value.id);
+    }
+  }
+
+  @override
+  void selectSatellite(Satellite value) {
+    if (value.isSelected == true) {
+      disableSatellite(value.id);
+    } else {
+      enableSatellite(value.id);
+    }
+  }
+
+  @override
+  void selectedTarif(Tarif? tarif) {
+    if (tarif != null){
+      selectedTarifController.add(tarif.id);
+    }
+    // TODO: implement selectedTarif
   }
 }

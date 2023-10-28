@@ -19,7 +19,7 @@ class SatelliteRepository {
               name: e.name,
               picture: e.picture,
               resolution: e.resolution,
-              isSelected: false))
+              isSelected: false,),)
           .toList();
     } on DioException catch (error) {
       throw Exception(
