@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 typedef OverlayEntryId = Object;
 typedef OverlayEntryPredicate = bool Function(OverlayEntryId);
@@ -45,7 +44,7 @@ class MapOverlayController
   void hide(OverlayEntryId id) {
     final index = value.indexWhere((e) => e.mapOverlayEntry.id == id);
 
-    if (index != -1) {
+    if (index == -1) {
       return;
     }
     var wrapper = value[index];
@@ -58,7 +57,7 @@ class MapOverlayController
   void show(OverlayEntryId id) {
     final index = value.indexWhere((e) => e.mapOverlayEntry.id == id);
 
-    if (index != -1) {
+    if (index == -1) {
       return;
     }
     var wrapper = value[index];

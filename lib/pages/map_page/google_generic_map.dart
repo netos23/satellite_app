@@ -10,12 +10,14 @@ class GoogleGenericMap extends StatefulWidget {
     super.key,
     required this.initialCameraPoint,
     this.onMapCreated,
-    this.objects = const [],
+    this.objects = const {},
+    this.onTap,
   });
 
   final ValueChanged<MapController>? onMapCreated;
+  final ValueChanged<MapPoint>? onTap;
   final MapPoint initialCameraPoint;
-  final List<MapObject> objects;
+  final Set<MapObject> objects;
 
   @override
   State<GoogleGenericMap> createState() => _GenericMapState();
@@ -35,6 +37,12 @@ class _GenericMapState extends State<GoogleGenericMap> {
       polygons: _mapPolygons(widget.objects),
       polylines: _mapPolyline(widget.objects),
       markers: _mapMarkers(widget.objects),
+      onTap: (p) => widget.onTap?.call(
+        MapPoint(
+          lat: p.latitude,
+          lon: p.longitude,
+        ),
+      ),
       onMapCreated: (controller) {
         final mapController = GenericGoogleMapController(controller);
         _mapController = mapController;
@@ -43,7 +51,7 @@ class _GenericMapState extends State<GoogleGenericMap> {
     );
   }
 
-  Set<gm.Polygon> _mapPolygons(List<MapObject> objects) {
+  Set<gm.Polygon> _mapPolygons(Iterable<MapObject> objects) {
     return objects
         .whereType<Polygon>()
         .map((p) => gm.Polygon(
@@ -66,21 +74,23 @@ class _GenericMapState extends State<GoogleGenericMap> {
         );
   }
 
-  Set<gm.Marker> _mapMarkers(List<MapObject> objects) {
+  Set<gm.Marker> _mapMarkers(Iterable<MapObject> objects) {
     return objects
         .whereType<MapObjectPoint>()
         .map((p) => gm.Marker(
               markerId: gm.MarkerId(p.id.value),
+              position: p.points.toLatLng(),
               onTap: p.onTap,
               onDrag: _mapIfNotNull(p.onDrag),
-              onDragEnd: _mapIfNotNull(p.onDrag),
-              onDragStart: _mapIfNotNull(p.onDrag),
+              draggable: _mapIfNotNull(p.onDragEnd) != null,
+              onDragEnd: _mapIfNotNull(p.onDragEnd),
+              onDragStart: _mapIfNotNull(p.onDragStart),
               icon: _buildIcon(p),
             ))
         .toSet();
   }
 
-  Set<gm.Polyline> _mapPolyline(List<MapObject> objects) {
+  Set<gm.Polyline> _mapPolyline(Iterable<MapObject> objects) {
     return objects
         .whereType<Polyline>()
         .map((p) => gm.Polyline(
@@ -101,11 +111,11 @@ class _GenericMapState extends State<GoogleGenericMap> {
 
   gm.BitmapDescriptor _buildIcon(MapObjectPoint p) {
     var byteData = p.byteData;
-    if(byteData != null){
+    if (byteData != null) {
       return gm.BitmapDescriptor.fromBytes(byteData);
     }
     var color = p.color;
-    if(color is double){
+    if (color is double) {
       return gm.BitmapDescriptor.defaultMarkerWithHue(color);
     }
 

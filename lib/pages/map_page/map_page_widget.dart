@@ -22,21 +22,24 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
     final textTheme = wm.textTheme;
     final colorTheme = wm.colorScheme;
 
-    return OrientationBuilder(
-      builder: (context, orientation) {
-        return Scaffold(
-          body: MapOverlay(
-            mapOverlayController: wm.mapOverlayController,
-            map: GoogleGenericMap(
-              onMapCreated: wm.onMapCreated,
-              initialCameraPoint: const MapPoint(
-                lat: 21.1232,
-                lon: 34.123,
-              ),
-            ),
-          ),
-        );
-      },
+    return Scaffold(
+      body: MapOverlay(
+        mapOverlayController: wm.mapOverlayController,
+        map: StreamBuilder(
+            stream: wm.mapObjectController,
+            builder: (context, snapshot) {
+              return GoogleGenericMap(
+                onMapCreated: wm.onMapCreated,
+                onTap: wm.onTap,
+                objects: snapshot.data ?? {},
+                initialCameraPoint: const MapPoint(
+                  lat: 21.1232,
+                  lon: 34.123,
+                ),
+              );
+            }
+        ),
+      ),
     );
   }
 }

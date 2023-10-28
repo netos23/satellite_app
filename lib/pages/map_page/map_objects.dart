@@ -56,7 +56,7 @@ sealed class MapObject with _$MapObject {
 
   factory MapObject.point({
     required MapsObjectId id,
-    required List<MapPoint> points,
+    required MapPoint points,
     Uint8List? byteData,
     num? color,
     VoidCallback? onTap,

@@ -2,7 +2,6 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
-import 'package:satellite_app/data/repository/geozones_repository.dart';
 import 'package:satellite_app/data/repository/satellite_repository.dart';
 import 'package:satellite_app/data/service/order_service.dart';
 import 'package:satellite_app/domain/entity/geozones/geozone.dart';
@@ -21,7 +20,6 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   AuthRepository get authRepository;
 
-  GeozonesRepository get geozonesRepository;
 
   OrderService get orderService;
 
@@ -95,9 +93,6 @@ class OrderingPageWidgetModel
   final phoneNumberController = TextEditingController();
 
   @override
-  final geozonesRepository = AppComponents().geozonesRepository;
-
-  @override
   final orderService = AppComponents().orderService;
 
   @override
@@ -116,7 +111,6 @@ class OrderingPageWidgetModel
   void initWidgetModel() {
     super.initWidgetModel();
     loadSatellite();
-    loadZones();
     loadTarifs();
 
     if (profileController.valueOrNull != null) {
@@ -158,10 +152,6 @@ class OrderingPageWidgetModel
     satelliteController.add(result);
   }
 
-  Future<void> loadZones() async {
-    final result = await geozonesRepository.getZones();
-    geozonesController.add(result);
-  }
 
   Future<void> loadTarifs() async {
     final result = await orderService.getTarifs();

@@ -20,7 +20,7 @@ Geozone _$GeozoneFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Geozone {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   List<List<List<double>>> get wkt => throw _privateConstructorUsedError;
 
@@ -34,7 +34,7 @@ abstract class $GeozoneCopyWith<$Res> {
   factory $GeozoneCopyWith(Geozone value, $Res Function(Geozone) then) =
       _$GeozoneCopyWithImpl<$Res, Geozone>;
   @useResult
-  $Res call({int id, String name, List<List<List<double>>> wkt});
+  $Res call({int? id, String name, List<List<List<double>>> wkt});
 }
 
 /// @nodoc
@@ -50,15 +50,15 @@ class _$GeozoneCopyWithImpl<$Res, $Val extends Geozone>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? wkt = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -78,7 +78,7 @@ abstract class _$$GeozoneImplCopyWith<$Res> implements $GeozoneCopyWith<$Res> {
       __$$GeozoneImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name, List<List<List<double>>> wkt});
+  $Res call({int? id, String name, List<List<List<double>>> wkt});
 }
 
 /// @nodoc
@@ -92,15 +92,15 @@ class __$$GeozoneImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? wkt = null,
   }) {
     return _then(_$GeozoneImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class __$$GeozoneImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GeozoneImpl implements _Geozone {
   _$GeozoneImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required final List<List<List<double>>> wkt})
       : _wkt = wkt;
@@ -126,7 +126,7 @@ class _$GeozoneImpl implements _Geozone {
       _$$GeozoneImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   final List<List<List<double>>> _wkt;
@@ -173,14 +173,14 @@ class _$GeozoneImpl implements _Geozone {
 
 abstract class _Geozone implements Geozone {
   factory _Geozone(
-      {required final int id,
+      {final int? id,
       required final String name,
       required final List<List<List<double>>> wkt}) = _$GeozoneImpl;
 
   factory _Geozone.fromJson(Map<String, dynamic> json) = _$GeozoneImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override

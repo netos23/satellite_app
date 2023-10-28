@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/pages/components/theme_switch.dart';
@@ -39,85 +38,114 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                   profileSnapshot.data!.email.isNotEmpty;
               final width = MediaQuery.of(context).size.width - 90;
 
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 800),
-                  child: isLogin ? Column(
-                    children:  [
-                      MenuItem(
-                          onTap: wm.onEditProfileTap,
-                          title: 'Мои данные',
-                          icon: Icons.person),
-                      const Divider(),
-                      MenuItem(
-                          onTap: wm.onEditProfileTap,
-                          title: 'Мои заказы',
-                          icon: Icons.shopping_cart),
-                      const Divider(),
-                      MenuItem(
-                          onTap: wm.onEditProfileTap,
-                          title: 'Мои зоны',
-                          icon: Icons.map),
-                      const Divider(),
-                      MenuItem(
-                        onTap: wm.onEditProfileTap,
-                        title: 'O нас',
-                        icon: Icons.settings_outlined,
-                      ),
-                      const Divider(),
-                      const Spacer(),
-                      Image.asset('assets/images/logo_large.png', width: width, height: width,),
-                      const Spacer(),
-                    ],
-                  )
-                      :
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children:     [
-                      Image.asset('assets/images/logo_large.png', width: width, height: width,),
-                      Text(
-                        'Что бы сталкерить\n на полную катушку,\n зарегистрируйтесь или\n войдите в аккаунт :) ',
-                        style: theme.textTheme.bodyMedium,
-                        textAlign: TextAlign.center,
-                      ),
-                      Row(
-                        children: [
-                          Flexible(
-                            child: FilledButton(
-                              style:
-                              theme.filledButtonTheme.style?.copyWith(
-                                fixedSize: const MaterialStatePropertyAll(
-                                  Size.fromHeight(50),
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16.0,
+                    vertical: 10,
+                  ),
+                  child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 800),
+                      child: isLogin
+                          ? Column(
+                              children: [
+                                MenuItem(
+                                    onTap: wm.onEditProfileTap,
+                                    title: 'Мои данные',
+                                    icon: Icons.person),
+                                const Divider(),
+                                MenuItem(
+                                    onTap: wm.onEditProfileTap,
+                                    title: 'Мои заказы',
+                                    icon: Icons.shopping_cart),
+                                const Divider(),
+                                MenuItem(
+                                    onTap: wm.onEditProfileTap,
+                                    title: 'Мои зоны',
+                                    icon: Icons.map),
+                                const Divider(),
+                                MenuItem(
+                                  onTap: wm.onEditProfileTap,
+                                  title: 'O нас',
+                                  icon: Icons.settings_outlined,
                                 ),
-                              ),
-                              onPressed: () {
-                                if (!isLogin) {
-                                  context.router.push(AuthRoute());
-                                } else {
-                                  wm.profileUseCase.logout();
-                                }
-                              },
-                              child: Center(
-                                child: !isLogin
-                                    ? const Text('Войти')
-                                    : const Text('Выйти'),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          Flexible(
-                            child: OutlinedButton(
-                                onPressed: () =>
-                                    context.router.push(RegisterRoute()),
-                                child: const Text('Зарегистрироваться')),
-                          )
-                        ],
-                      ),
-                    ],
-                  )
+                                const Divider(),
+                                const Spacer(),
+                                Image.asset(
+                                  'assets/images/logo_large.png',
+                                  width: width,
+                                  height: width,
+                                ),
+                                const Spacer(),
+                              ],
+                            )
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  flex: 10,
+                                  child: Image.asset(
+                                    'assets/images/logo_large.png',
+                                    width: width,
+                                    height: width,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 3,
+                                  child: Text(
+                                    'Что бы сталкерить\n на полную катушку,\n зарегистрируйтесь или\n войдите в аккаунт :) ',
+                                    style: theme.textTheme.bodyMedium?.copyWith(
+                                      color: Theme.of(context).colorScheme.onBackground,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: SizedBox(
+                                    width: 500,
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          child: FilledButton(
+                                            style: theme.filledButtonTheme.style
+                                                ?.copyWith(
+                                              fixedSize:
+                                                  const MaterialStatePropertyAll(
+                                                Size.fromHeight(50),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              if (!isLogin) {
+                                                context.router
+                                                    .push(AuthRoute());
+                                              } else {
+                                                wm.profileUseCase.logout();
+                                              }
+                                            },
+                                            child: Center(
+                                              child: !isLogin
+                                                  ? const Text('Войти')
+                                                  : const Text('Выйти'),
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 16,
+                                        ),
+                                        Expanded(
+                                          child: OutlinedButton(
+                                              onPressed: () => context.router
+                                                  .push(RegisterRoute()),
+                                              child: const Text(
+                                                  'Зарегистрироваться')),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
                 ),
               );
             },

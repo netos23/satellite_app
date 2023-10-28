@@ -186,7 +186,7 @@ mixin _$MapObject {
         polygon,
     required TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -206,7 +206,7 @@ mixin _$MapObject {
         polygon,
     TResult? Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -226,7 +226,7 @@ mixin _$MapObject {
         polygon,
     TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -455,7 +455,7 @@ class _$PolygonImpl with DiagnosticableTreeMixin implements Polygon {
         polygon,
     required TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -478,7 +478,7 @@ class _$PolygonImpl with DiagnosticableTreeMixin implements Polygon {
         polygon,
     TResult? Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -501,7 +501,7 @@ class _$PolygonImpl with DiagnosticableTreeMixin implements Polygon {
         polygon,
     TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -588,13 +588,15 @@ abstract class _$$MapObjectPointImplCopyWith<$Res>
   @useResult
   $Res call(
       {MapsObjectId id,
-      List<MapPoint> points,
+      MapPoint points,
       Uint8List? byteData,
       num? color,
       VoidCallback? onTap,
       ValueChanged<MapPoint>? onDragStart,
       ValueChanged<MapPoint>? onDragEnd,
       ValueChanged<MapPoint>? onDrag});
+
+  $MapPointCopyWith<$Res> get points;
 }
 
 /// @nodoc
@@ -623,9 +625,9 @@ class __$$MapObjectPointImplCopyWithImpl<$Res>
           : id // ignore: cast_nullable_to_non_nullable
               as MapsObjectId,
       points: null == points
-          ? _value._points
+          ? _value.points
           : points // ignore: cast_nullable_to_non_nullable
-              as List<MapPoint>,
+              as MapPoint,
       byteData: freezed == byteData
           ? _value.byteData
           : byteData // ignore: cast_nullable_to_non_nullable
@@ -652,6 +654,14 @@ class __$$MapObjectPointImplCopyWithImpl<$Res>
               as ValueChanged<MapPoint>?,
     ));
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MapPointCopyWith<$Res> get points {
+    return $MapPointCopyWith<$Res>(_value.points, (value) {
+      return _then(_value.copyWith(points: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -661,25 +671,18 @@ class _$MapObjectPointImpl
     implements MapObjectPoint {
   _$MapObjectPointImpl(
       {required this.id,
-      required final List<MapPoint> points,
+      required this.points,
       this.byteData,
       this.color,
       this.onTap,
       this.onDragStart,
       this.onDragEnd,
-      this.onDrag})
-      : _points = points;
+      this.onDrag});
 
   @override
   final MapsObjectId id;
-  final List<MapPoint> _points;
   @override
-  List<MapPoint> get points {
-    if (_points is EqualUnmodifiableListView) return _points;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_points);
-  }
-
+  final MapPoint points;
   @override
   final Uint8List? byteData;
   @override
@@ -719,7 +722,7 @@ class _$MapObjectPointImpl
         (other.runtimeType == runtimeType &&
             other is _$MapObjectPointImpl &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other._points, _points) &&
+            (identical(other.points, points) || other.points == points) &&
             const DeepCollectionEquality().equals(other.byteData, byteData) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.onTap, onTap) || other.onTap == onTap) &&
@@ -734,7 +737,7 @@ class _$MapObjectPointImpl
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      const DeepCollectionEquality().hash(_points),
+      points,
       const DeepCollectionEquality().hash(byteData),
       color,
       onTap,
@@ -757,7 +760,7 @@ class _$MapObjectPointImpl
         polygon,
     required TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -781,7 +784,7 @@ class _$MapObjectPointImpl
         polygon,
     TResult? Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -805,7 +808,7 @@ class _$MapObjectPointImpl
         polygon,
     TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -863,7 +866,7 @@ class _$MapObjectPointImpl
 abstract class MapObjectPoint implements MapObject {
   factory MapObjectPoint(
       {required final MapsObjectId id,
-      required final List<MapPoint> points,
+      required final MapPoint points,
       final Uint8List? byteData,
       final num? color,
       final VoidCallback? onTap,
@@ -873,7 +876,7 @@ abstract class MapObjectPoint implements MapObject {
 
   @override
   MapsObjectId get id;
-  List<MapPoint> get points;
+  MapPoint get points;
   Uint8List? get byteData;
   num? get color;
   @override
@@ -1020,7 +1023,7 @@ class _$PolylineImpl with DiagnosticableTreeMixin implements Polyline {
         polygon,
     required TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -1043,7 +1046,7 @@ class _$PolylineImpl with DiagnosticableTreeMixin implements Polyline {
         polygon,
     TResult? Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
@@ -1066,7 +1069,7 @@ class _$PolylineImpl with DiagnosticableTreeMixin implements Polyline {
         polygon,
     TResult Function(
             MapsObjectId id,
-            List<MapPoint> points,
+            MapPoint points,
             Uint8List? byteData,
             num? color,
             VoidCallback? onTap,
