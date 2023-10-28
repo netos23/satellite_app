@@ -114,7 +114,8 @@ class __$$GeozoneImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(includeIfNull: true)
 class _$GeozoneImpl implements _Geozone {
   _$GeozoneImpl(
       {this.id,
