@@ -19,9 +19,17 @@ _$GeozoneImpl _$$GeozoneImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$GeozoneImplToJson(_$GeozoneImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'wkt': instance.wkt,
-    };
+Map<String, dynamic> _$$GeozoneImplToJson(_$GeozoneImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  val['name'] = instance.name;
+  val['wkt'] = instance.wkt;
+  return val;
+}
