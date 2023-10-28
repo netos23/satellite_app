@@ -122,7 +122,7 @@ class MapSettingsPageWidgetModel
     await showModalBottomSheet(
       context: context,
       useRootNavigator: true,
-      constraints: BoxConstraints.expand(width: 500, height: 350),
+      constraints: const BoxConstraints.expand(width: 500, height: 350),
       builder: (_) {
         return Padding(
           padding: const EdgeInsets.only(
@@ -137,7 +137,7 @@ class MapSettingsPageWidgetModel
               ),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Text('Границы ночи:'),
+                title: const Text('Границы ночи:'),
                 trailing: StreamBuilder(
                   stream: dayZonesController,
                   builder: (context, snapshot) {
@@ -154,7 +154,7 @@ class MapSettingsPageWidgetModel
               const Divider(),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Text('Запрещенные зоны:'),
+                title: const Text('Запрещенные зоны:'),
                 trailing: StreamBuilder(
                   stream: deprecatedZonesController,
                   builder: (context, snapshot) {
@@ -170,7 +170,7 @@ class MapSettingsPageWidgetModel
               const Divider(),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Text('Публичные зоны:'),
+                title: const Text('Публичные зоны:'),
                 trailing: StreamBuilder(
                   stream: publicZonesController,
                   builder: (context, snapshot) {
@@ -186,9 +186,9 @@ class MapSettingsPageWidgetModel
               const Divider(),
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Text('Спутники:'),
+                title: const Text('Спутники:'),
                 onTap: openSattelites,
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.navigate_next,
                 ),
               ),
@@ -292,7 +292,7 @@ class MapSettingsPageWidgetModel
       isScrollControlled: true,
       useRootNavigator: true,
       isDismissible: true,
-      constraints: BoxConstraints.expand(width: 500, height: 600),
+      constraints: const BoxConstraints.expand(width: 500, height: 600),
       builder: (_) {
         return Column(
           children: [
@@ -311,8 +311,8 @@ class MapSettingsPageWidgetModel
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset('assets/images/logo_large.png'),
-                        SizedBox(height: 10),
-                        Text('Спутников пока нет:(')
+                        const SizedBox(height: 10),
+                        const Text('Спутников пока нет:(')
                       ],
                     );
                   }

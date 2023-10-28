@@ -30,6 +30,7 @@ mixin _$Order {
   int? get status => throw _privateConstructorUsedError;
   int get geozone => throw _privateConstructorUsedError;
   int get tarif => throw _privateConstructorUsedError;
+  List<int> get plugins => throw _privateConstructorUsedError;
   @JsonKey(name: "created_at")
   String? get createdAt => throw _privateConstructorUsedError;
   int? get id => throw _privateConstructorUsedError;
@@ -53,6 +54,7 @@ abstract class $OrderCopyWith<$Res> {
       int? status,
       int geozone,
       int tarif,
+      List<int> plugins,
       @JsonKey(name: "created_at") String? createdAt,
       int? id});
 }
@@ -78,6 +80,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? status = freezed,
     Object? geozone = null,
     Object? tarif = null,
+    Object? plugins = null,
     Object? createdAt = freezed,
     Object? id = freezed,
   }) {
@@ -114,6 +117,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.tarif
           : tarif // ignore: cast_nullable_to_non_nullable
               as int,
+      plugins: null == plugins
+          ? _value.plugins
+          : plugins // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -142,6 +149,7 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       int? status,
       int geozone,
       int tarif,
+      List<int> plugins,
       @JsonKey(name: "created_at") String? createdAt,
       int? id});
 }
@@ -165,6 +173,7 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? status = freezed,
     Object? geozone = null,
     Object? tarif = null,
+    Object? plugins = null,
     Object? createdAt = freezed,
     Object? id = freezed,
   }) {
@@ -201,6 +210,10 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.tarif
           : tarif // ignore: cast_nullable_to_non_nullable
               as int,
+      plugins: null == plugins
+          ? _value._plugins
+          : plugins // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -225,9 +238,11 @@ class _$OrderImpl implements _Order {
       this.status,
       required this.geozone,
       required this.tarif,
+      required final List<int> plugins,
       @JsonKey(name: "created_at") this.createdAt,
       this.id})
-      : _satellites = satellites;
+      : _satellites = satellites,
+        _plugins = plugins;
 
   factory _$OrderImpl.fromJson(Map<String, dynamic> json) =>
       _$$OrderImplFromJson(json);
@@ -256,6 +271,14 @@ class _$OrderImpl implements _Order {
   final int geozone;
   @override
   final int tarif;
+  final List<int> _plugins;
+  @override
+  List<int> get plugins {
+    if (_plugins is EqualUnmodifiableListView) return _plugins;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_plugins);
+  }
+
   @override
   @JsonKey(name: "created_at")
   final String? createdAt;
@@ -264,7 +287,7 @@ class _$OrderImpl implements _Order {
 
   @override
   String toString() {
-    return 'Order(dateBegin: $dateBegin, dateEnd: $dateEnd, user: $user, price: $price, satellites: $satellites, status: $status, geozone: $geozone, tarif: $tarif, createdAt: $createdAt, id: $id)';
+    return 'Order(dateBegin: $dateBegin, dateEnd: $dateEnd, user: $user, price: $price, satellites: $satellites, status: $status, geozone: $geozone, tarif: $tarif, plugins: $plugins, createdAt: $createdAt, id: $id)';
   }
 
   @override
@@ -282,6 +305,7 @@ class _$OrderImpl implements _Order {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.geozone, geozone) || other.geozone == geozone) &&
             (identical(other.tarif, tarif) || other.tarif == tarif) &&
+            const DeepCollectionEquality().equals(other._plugins, _plugins) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.id, id) || other.id == id));
@@ -299,6 +323,7 @@ class _$OrderImpl implements _Order {
       status,
       geozone,
       tarif,
+      const DeepCollectionEquality().hash(_plugins),
       createdAt,
       id);
 
@@ -326,6 +351,7 @@ abstract class _Order implements Order {
       final int? status,
       required final int geozone,
       required final int tarif,
+      required final List<int> plugins,
       @JsonKey(name: "created_at") final String? createdAt,
       final int? id}) = _$OrderImpl;
 
@@ -349,6 +375,8 @@ abstract class _Order implements Order {
   int get geozone;
   @override
   int get tarif;
+  @override
+  List<int> get plugins;
   @override
   @JsonKey(name: "created_at")
   String? get createdAt;

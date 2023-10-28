@@ -1,6 +1,5 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/data/repository/satellite_repository.dart';
@@ -13,6 +12,7 @@ import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/domain/models/satellite.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/router/app_router.dart';
 import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 
@@ -22,7 +22,6 @@ import 'ordering_page_widget.dart';
 abstract class IOrderingPageWidgetModel extends IWidgetModel
     implements IThemeProvider {
   AuthRepository get authRepository;
-
 
   OrderService get orderService;
 
@@ -65,7 +64,6 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
   void orderCreate();
 
   void selectedTarif(Tarif? tarif);
-
 }
 
 OrderingPageWidgetModel defaultOrderingPageWidgetModelFactory(
@@ -124,7 +122,8 @@ class OrderingPageWidgetModel
   final selectedTarifController = BehaviorSubject.seeded(1);
 
   @override
-  final rangeValuesController = BehaviorSubject.seeded(const RangeValues(0.1, 5));
+  final rangeValuesController =
+      BehaviorSubject.seeded(const RangeValues(0.1, 5));
 
   @override
   final pluginController = BehaviorSubject();
@@ -184,7 +183,6 @@ class OrderingPageWidgetModel
     final result = await satelliteRepository.getSatellite();
     satelliteController.add(result);
   }
-
 
   Future<void> loadTarifs() async {
     final result = await orderService.getTarifs();
@@ -286,11 +284,15 @@ class OrderingPageWidgetModel
   );
 
   @override
-  Future<void> orderCreate() async  {
+  Future<void> orderCreate() async {
     final profile = profileController.valueOrNull;
     final tarif = selectedTarifController.valueOrNull;
-    final start = startDate.valueOrNull;
-    final end = startDate.valueOrNull;
+    final start = startDate.valueOrNull ?? DateTime.now();
+    final end =
+        startDate.valueOrNull ?? DateTime.now().add(const Duration(days: 1));
+    final selectedPlugins = (pluginController.valueOrNull ?? [])
+        .where((element) => element.isSelected == true)
+        .toList();
     List<Satellite> checkedSatellited = satelliteController.valueOrNull ?? [];
     checkedSatellited =
         checkedSatellited.where((element) => element.isSelected).toList();
@@ -298,18 +300,18 @@ class OrderingPageWidgetModel
       try {
         await orderService.postOrder(
           request: Order(
-            dateBegin: start != null ? DateFormat('yyyy-MM-dd').format(start) : '',
-            dateEnd: end != null ? DateFormat('yyyy-MM-dd').format(end) : '',
+            dateBegin: start != null ? start.toUtc().toString() : '',
+            dateEnd: end != null ? start.toUtc().toString() : '',
+            createdAt: DateTime.now().toUtc().toString(),
             satellites: checkedSatellited.map((e) => e.id).toList(),
             geozone: widget.zoneId,
             tarif: tarif,
+            plugins: selectedPlugins.map((e) => e.id).toList(),
           ),
         );
         router.pop();
         context.showSnackBar('Заказ оформлен!');
-      }
-      catch (_){
-      }
+      } catch (_) {}
     }
   }
 
@@ -333,7 +335,7 @@ class OrderingPageWidgetModel
 
   @override
   void selectedTarif(Tarif? tarif) {
-    if (tarif != null){
+    if (tarif != null) {
       selectedTarifController.add(tarif.id);
     }
     // TODO: implement selectedTarif

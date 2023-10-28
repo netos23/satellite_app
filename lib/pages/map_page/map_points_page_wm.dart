@@ -280,16 +280,14 @@ class MapPointsPageWidgetModel
       ),
     );
 
-    final id =
-        zones.where((z) => z.name == _nameController.text).firstOrNull?.id;
+    final id = zones.id;
     if (id == null) {
       context.showSnackBar('Не удалось создать зону');
       return;
     }
 
-    Navigator.of(context).pop();
+    router.pop();
     close();
-
     router.push(OrderingRoute(zoneId: id));
   }
 

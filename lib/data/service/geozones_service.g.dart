@@ -94,14 +94,14 @@ class _GeozonesService implements GeozonesService {
   }
 
   @override
-  Future<List<Geozone>> postZones({required Geozone request}) async {
+  Future<Geozone> postZones({required Geozone request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
     final _result =
-        await _dio.fetch<List<dynamic>>(_setStreamType<List<Geozone>>(Options(
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Geozone>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -113,9 +113,7 @@ class _GeozonesService implements GeozonesService {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => Geozone.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = Geozone.fromJson(_result.data!);
     return value;
   }
 
