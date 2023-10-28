@@ -28,65 +28,68 @@ class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
             title: const Text('Оформление заказа'),
             centerTitle: true,
           ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                _ProfileCard(model: wm, theme: theme),
-                const SizedBox(
-                  height: 16,
-                ),
-                _SettingsCard(model: wm, theme: theme),
-                const SizedBox(
-                  height: 16,
-                ),
-                _SatelliteGrid(model: wm, theme: theme),
-                const SizedBox(
-                  height: 16,
-                ),
-                _TarifList(model: wm, theme: theme),
-                const SizedBox(
-                  height: 16,
-                ),
-                _PlaginSlider(model: wm, theme: theme),
-                const SizedBox(
-                  height: 8,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        'От',
-                        style: theme.textTheme.titleLarge,
-                      ),
-                      const Spacer(),
-                      Text(
-                        '30 000 ₽',
-                        style: theme.textTheme.titleLarge,
-                      ),
-                    ],
+          body: SizedBox(
+            width: 600,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  _ProfileCard(model: wm, theme: theme),
+                  const SizedBox(
+                    height: 16,
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: SizedBox(
-                    height: 50,
-                    child: FilledButton(
-                      style: theme.filledButtonTheme.style?.copyWith(
-                        fixedSize: const MaterialStatePropertyAll(
-                          Size.fromHeight(50),
+                  _SettingsCard(model: wm, theme: theme),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  _SatelliteGrid(model: wm, theme: theme),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  _TarifList(model: wm, theme: theme),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  _PlaginSlider(model: wm, theme: theme),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        Text(
+                          'От',
+                          style: theme.textTheme.titleLarge,
                         ),
-                      ),
-                      onPressed: wm.orderCreate,
-                      child: const Center(
-                        child: Text('Оформить'),
+                        const Spacer(),
+                        Text(
+                          '30 000 ₽',
+                          style: theme.textTheme.titleLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    child: SizedBox(
+                      height: 50,
+                      child: FilledButton(
+                        style: theme.filledButtonTheme.style?.copyWith(
+                          fixedSize: const MaterialStatePropertyAll(
+                            Size.fromHeight(50),
+                          ),
+                        ),
+                        onPressed: wm.orderCreate,
+                        child: const Center(
+                          child: Text('Оформить'),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -122,7 +125,7 @@ class _SettingsCard extends StatelessWidget {
                     return GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       onTap: () async {
-                        final newDate = await showDateDialog(context, startdate!);
+                        final newDate = await showDateDialog(context, startdate);
                         if (newDate != null) {
                           model.startDate.add(newDate);
                         }
@@ -182,7 +185,7 @@ class _SettingsCard extends StatelessWidget {
                         ],
                       ),
                       RangeSlider(
-                        values: values ?? const RangeValues(0.1, 5),
+                        values: values,
                         max: 5,
                         labels: RangeLabels(
                           values.start.toStringAsFixed(2),
@@ -285,7 +288,7 @@ class _TarifList extends StatelessWidget {
                                           padding: const EdgeInsets.all(4.0),
                                           child: Column(
                                             children: [
-                                              Text(tarif.name ?? ''),
+                                              Text(tarif.name),
                                               const SizedBox(
                                                 height: 8,
                                               ),
@@ -294,8 +297,7 @@ class _TarifList extends StatelessWidget {
                                                   const Text('Базовая цена:'),
                                                   const Spacer(),
                                                   Text(tarif.basePrice
-                                                          .toString() ??
-                                                      ''),
+                                                          .toString()),
                                                 ],
                                               ),
                                               Row(
@@ -303,13 +305,12 @@ class _TarifList extends StatelessWidget {
                                                   const Text('Цена за фото:'),
                                                   const Spacer(),
                                                   Text(tarif.perPhoto
-                                                          .toString() ??
-                                                      ''),
+                                                          .toString()),
                                                 ],
                                               ),
                                               const Spacer(),
                                               Text(
-                                                tarif.description ?? '',
+                                                tarif.description,
                                                 maxLines: 2,
                                               ),
                                             ],
@@ -390,7 +391,7 @@ class _PlaginSlider extends StatelessWidget {
                                     width: 8,
                                   ),
                                   Text(
-                                    plugin.name ?? '',
+                                    plugin.name,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   const Icon(Icons.settings_outlined),
@@ -451,7 +452,7 @@ class _SatelliteGrid extends StatelessWidget {
                       mainAxisSpacing: 8,
                     ),
                     shrinkWrap: true,
-                    itemCount: satellites.length ?? 0,
+                    itemCount: satellites.length,
                     itemBuilder: (BuildContext context, int index) {
                       return _SatelliteCard(
                           value: satellites[index], model: model, theme: theme);

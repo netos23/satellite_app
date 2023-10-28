@@ -38,59 +38,62 @@ class ShowCasePageWidget extends ElementaryWidget<IShowCasePageWidgetModel> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: EntityStateNotifierBuilder(
-          listenableEntityState: wm.bannersState,
-          loadingBuilder: (context, data) {
-            return const Center(
-              child: LoadingIndicator(),
-            );
-          },
-          builder: (context, bannersData) {
-            final banners = bannersData ?? [];
-            if (banners.isEmpty) {
+      body: SizedBox(
+        width: 600,
+        child: SafeArea(
+          child: EntityStateNotifierBuilder(
+            listenableEntityState: wm.bannersState,
+            loadingBuilder: (context, data) {
               return const Center(
-                child: Text('Can`t get banners'),
+                child: LoadingIndicator(),
               );
-            }
+            },
+            builder: (context, bannersData) {
+              final banners = bannersData ?? [];
+              if (banners.isEmpty) {
+                return const Center(
+                  child: Text('Can`t get banners'),
+                );
+              }
 
-            return RefreshIndicator.adaptive(
-              onRefresh: wm.loadBanners,
-              child: ListView.builder(
-                itemCount: banners.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 5.0,
-                    ),
-                    child: banners[index].when(
-                      imageBanner: (imageUrl, link) => _ImageBannerWidget(
-                        image: imageUrl,
-                        link: link,
-                        onTap: wm.openLink,
+              return RefreshIndicator.adaptive(
+                onRefresh: wm.loadBanners,
+                child: ListView.builder(
+                  itemCount: banners.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 5.0,
                       ),
-                      buttonBanner: (text, link) => _ButtonBannerWidget(
-                        text: text,
-                        link: link,
-                        onPressed: wm.openLink,
+                      child: banners[index].when(
+                        imageBanner: (imageUrl, link) => _ImageBannerWidget(
+                          image: imageUrl,
+                          link: link,
+                          onTap: wm.openLink,
+                        ),
+                        buttonBanner: (text, link) => _ButtonBannerWidget(
+                          text: text,
+                          link: link,
+                          onPressed: wm.openLink,
+                        ),
+                        titleBanner: (text) => _TitleBannerWidget(
+                          text: text,
+                        ),
+                        markdownBanner: (text) => _MarkdownBannerWidget(
+                          text: text,
+                          onTap: wm.openLink,
+                        ),
+                        sliderBanner: (items) => _SliderBannerWidget(
+                          items: items,
+                          onTap: wm.openLink,
+                        ),
                       ),
-                      titleBanner: (text) => _TitleBannerWidget(
-                        text: text,
-                      ),
-                      markdownBanner: (text) => _MarkdownBannerWidget(
-                        text: text,
-                        onTap: wm.openLink,
-                      ),
-                      sliderBanner: (items) => _SliderBannerWidget(
-                        items: items,
-                        onTap: wm.openLink,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            );
-          },
+                    );
+                  },
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
