@@ -16,6 +16,7 @@ _$OrderImpl _$$OrderImplFromJson(Map<String, dynamic> json) => _$OrderImpl(
       status: json['status'] as int?,
       geozone: json['geozone'] as int,
       tarif: json['tarif'] as int,
+      plugins: (json['plugins'] as List<dynamic>).map((e) => e as int).toList(),
       createdAt: json['created_at'] as String?,
       id: json['id'] as int?,
     );
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$OrderImplToJson(_$OrderImpl instance) =>
       'status': instance.status,
       'geozone': instance.geozone,
       'tarif': instance.tarif,
+      'plugins': instance.plugins,
       'created_at': instance.createdAt,
       'id': instance.id,
     };

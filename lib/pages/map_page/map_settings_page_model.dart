@@ -50,7 +50,7 @@ class MapSettingsPageModel extends ElementaryModel {
   }
 
   @override
-  Future<List<Geozone>> postZones({required Geozone request}) async {
+  Future<Geozone> postZones({required Geozone request}) async {
     try {
       final result = await _geozonesService.postZones(request: request);
       return result;
