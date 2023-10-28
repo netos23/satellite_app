@@ -301,8 +301,7 @@ class OrderingPageWidgetModel
             dateBegin: start != null ? DateFormat('yyyy-MM-dd').format(start) : '',
             dateEnd: end != null ? DateFormat('yyyy-MM-dd').format(end) : '',
             satellites: checkedSatellited.map((e) => e.id).toList(),
-            //TODO addIdZone
-            geozone: 0,
+            geozone: widget.zoneId,
             tarif: tarif,
           ),
         );
