@@ -73,7 +73,18 @@ class AuthRepository {
   @override
   Future<void> register({required Profile profile}) async {
     try {
-      await _authService.register(profile: profile);
+      await _authService.register(
+        profile: Profile(
+          email: profile.email,
+          firstName: profile.firstName,
+          secondName: profile.secondName,
+          brand: profile.brand,
+          gender: profile.gender,
+          role: 'client',
+          birthDate: profile.birthDate,
+          phone: profile.phone,
+        ),
+      );
     } on DioException catch (error) {
       throw Exception(
         error.response?.data['message'],

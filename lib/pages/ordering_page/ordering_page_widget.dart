@@ -116,57 +116,70 @@ class _SettingsCard extends StatelessWidget {
           children: [
             const Text('Настройки съемки:'),
             StreamBuilder<DateTime>(
-              stream: model.startDate,
-              builder: (context, snapshot) {
-                final startdate = snapshot.hasData ? snapshot.data : DateTime.now();
-                return StreamBuilder<DateTime>(
-                    stream: model.secondDate,
-                    builder: (context, snapshot) {
-                    return GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      onTap: () async {
-                        final newDate = await showDateDialog(context, startdate);
-                        if (newDate != null) {
-                          model.startDate.add(newDate);
-                        }
-                      },
-                      child: Row(
-                        children: [
-                          const Text('Дата начала'),
-                          const Spacer(),
-                          Text(DateFormat('yyyy-MM-dd').format(startdate!),),
-                          const SizedBox(width: 8,),
-                          const Icon(Icons.settings_outlined),
-                        ],
-                      ),
-                    );
-                  }
-                );
-              }
-            ),
+                stream: model.startDate,
+                builder: (context, snapshot) {
+                  final startdate =
+                      snapshot.hasData ? snapshot.data : DateTime.now();
+                  return StreamBuilder<DateTime>(
+                      stream: model.secondDate,
+                      builder: (context, snapshot) {
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () async {
+                            final newDate =
+                                await showDateDialog(context, startdate);
+                            if (newDate != null) {
+                              model.startDate.add(newDate);
+                            }
+                          },
+                          child: Row(
+                            children: [
+                              const Text('Дата начала'),
+                              const Spacer(),
+                              Text(
+                                DateFormat('yyyy-MM-dd').format(startdate!),
+                              ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              const Icon(Icons.settings_outlined),
+                            ],
+                          ),
+                        );
+                      });
+                }),
             StreamBuilder<DateTime>(
-              stream: model.secondDate,
-              builder: (context, snapshot) {
-                final startdate = snapshot.hasData ? snapshot.data : DateTime.now();
-                final endDate = snapshot.hasData ? snapshot.data : startdate;
-                return GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () async {
-                    final newDate = await showDateDialog(context, endDate, startdate);
-                    if (newDate != null) {
-                      model.secondDate.add(newDate);
-                    }                  },
-                  child: Row(
-                    children: [
-                      const Text('Дата окончания:'),
-                      const Spacer(),
-                      Text(DateFormat('yyyy-MM-dd').format(endDate!),),
-                      const SizedBox(width: 8,),
-                      const Icon(Icons.settings_outlined),
-                    ],
-                  ),
-                );
-              }
+                stream: model.secondDate,
+                builder: (context, snapshot) {
+                  final startdate =
+                      snapshot.hasData ? snapshot.data : DateTime.now();
+                  final endDate = snapshot.hasData ? snapshot.data : startdate;
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () async {
+                      final newDate =
+                          await showDateDialog(context, endDate, startdate);
+                      if (newDate != null) {
+                        model.secondDate.add(newDate);
+                      }
+                    },
+                    child: Row(
+                      children: [
+                        const Text('Дата окончания:'),
+                        const Spacer(),
+                        Text(
+                          DateFormat('yyyy-MM-dd').format(endDate!),
+                        ),
+                        const SizedBox(
+                          width: 8,
+                        ),
+                        const Icon(Icons.settings_outlined),
+                      ],
+                    ),
+                  );
+                }),
+            const SizedBox(
+              height: 8,
             ),
             const Text('Количество мегапикселей:'),
             StreamBuilder<RangeValues>(
@@ -207,7 +220,8 @@ class _SettingsCard extends StatelessWidget {
     );
   }
 
-  Future<DateTime?> showDateDialog(BuildContext context, DateTime value, [DateTime? initial]) async {
+  Future<DateTime?> showDateDialog(BuildContext context, DateTime value,
+      [DateTime? initial]) async {
     return await showDatePicker(
       context: context,
       initialDate: value,
@@ -297,7 +311,7 @@ class _TarifList extends StatelessWidget {
                                                   const Text('Базовая цена:'),
                                                   const Spacer(),
                                                   Text(tarif.basePrice
-                                                          .toString()),
+                                                      .toString()),
                                                 ],
                                               ),
                                               Row(
@@ -305,7 +319,7 @@ class _TarifList extends StatelessWidget {
                                                   const Text('Цена за фото:'),
                                                   const Spacer(),
                                                   Text(tarif.perPhoto
-                                                          .toString()),
+                                                      .toString()),
                                                 ],
                                               ),
                                               const Spacer(),
@@ -566,7 +580,6 @@ class _ProfileCard extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              textAlign: TextAlign.center,
               controller: model.firstNameController,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onBackground,
@@ -581,7 +594,6 @@ class _ProfileCard extends StatelessWidget {
               height: 8,
             ),
             TextField(
-              textAlign: TextAlign.center,
               controller: model.secondNameController,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onBackground,
@@ -596,7 +608,6 @@ class _ProfileCard extends StatelessWidget {
               height: 8,
             ),
             TextField(
-              textAlign: TextAlign.center,
               controller: model.emailController,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onBackground,
@@ -611,7 +622,6 @@ class _ProfileCard extends StatelessWidget {
               height: 8,
             ),
             TextField(
-              textAlign: TextAlign.center,
               controller: model.phoneNumberController,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onBackground,

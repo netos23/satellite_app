@@ -35,7 +35,6 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32,),
                 child: TextField(
-                  textAlign: TextAlign.center,
                   controller: wm.emailController,
                   style: theme.textTheme.bodyMedium?.copyWith(
                     color: theme.colorScheme.onBackground,

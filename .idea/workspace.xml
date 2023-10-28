@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(plugin dto)">
+    <list default="true" id="9b978e7f-0e78-4ca5-a59f-da30b37bc313" name="Changes" comment="fix(web adaptation)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/auth_page/auth_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_wm.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/register_page/register_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1698483997330</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="fix(order creating)">
+      <created>1698486638759</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1698486638759</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix(web adaptation)">
+      <created>1698487083105</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698487083105</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -219,7 +231,9 @@
     <MESSAGE value="feature(order create data)" />
     <MESSAGE value="feature(order view)" />
     <MESSAGE value="fix(plugin dto)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(plugin dto)" />
+    <MESSAGE value="fix(order creating)" />
+    <MESSAGE value="fix(web adaptation)" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(web adaptation)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -255,13 +269,8 @@
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/pages/edit_profile_page/edit_profile_page_widget.dart</url>
-          <line>134</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/pages/ordering_page/ordering_page_widget.dart</url>
-          <line>530</line>
+          <line>545</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
