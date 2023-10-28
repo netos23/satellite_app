@@ -271,14 +271,14 @@ class MapPointsPageWidgetModel
     }
 
     final s = AppComponents().geozonesService;
-    final zones = await s.postZones(request: [
+    final zones = await s.postZones(request:
       Geozone(
         name: _nameController.text,
         wkt: <List<List<double>>>[
           _pointes.map((p) => p.points).map((e) => [e.lat, e.lon]).toList()
         ],
       ),
-    ]);
+    );
 
     final id =
         zones.where((z) => z.name == _nameController.text).firstOrNull?.id;

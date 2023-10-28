@@ -94,11 +94,12 @@ class _GeozonesService implements GeozonesService {
   }
 
   @override
-  Future<List<Geozone>> postZones({required List<Geozone> request}) async {
+  Future<List<Geozone>> postZones({required Geozone request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = request.map((e) => e.toJson()).toList();
+    final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<Geozone>>(Options(
       method: 'POST',

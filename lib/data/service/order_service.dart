@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auto_route/annotations.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
@@ -15,6 +16,11 @@ abstract class OrderService {
   @POST('/order/')
   Future<Order> postOrder({
     @Body() required Order request,
+  });
+
+  @GET('/order/orders/')
+  Future<Order> postOrders({
+    @QueryParam('id') required int id,
   });
 
   @GET('/order/tarifs/')
