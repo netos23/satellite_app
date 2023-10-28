@@ -1,15 +1,18 @@
 import 'package:dio/dio.dart';
+import 'package:elementary/elementary.dart';
 import 'package:satellite_app/data/service/geozones_service.dart';
+import 'package:satellite_app/data/service/satellite_service.dart';
 import 'package:satellite_app/domain/entity/geozones/geozone.dart';
 
-class GeozonesRepository {
-  GeozonesRepository(
+// TODO: cover with documentation
+/// Default Elementary model for MapSettingsPage module
+class MapSettingsPageModel extends ElementaryModel {
+  MapSettingsPageModel(
     this._geozonesService,
   );
 
   final GeozonesService _geozonesService;
 
-  @override
   Future<List<Geozone>> getDeprecated() async {
     try {
       final result = await _geozonesService.getDeprecated();
@@ -21,7 +24,6 @@ class GeozonesRepository {
     }
   }
 
-  @override
   Future<List<Geozone>> getZones() async {
     try {
       final result = await _geozonesService.getZones();
@@ -58,4 +60,6 @@ class GeozonesRepository {
       );
     }
   }
+
+
 }

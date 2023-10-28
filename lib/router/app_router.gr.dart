@@ -78,12 +78,12 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     OrderingRoute.name: (routeData) {
-      final args = routeData.argsAs<OrderingRouteArgs>(
-          orElse: () => const OrderingRouteArgs());
+      final args = routeData.argsAs<OrderingRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: OrderingPageWidget(
           key: args.key,
+          zoneId: args.zoneId,
           wmFactory: args.wmFactory,
         ),
       );
@@ -395,6 +395,7 @@ class MapTab extends PageRouteInfo<void> {
 class OrderingRoute extends PageRouteInfo<OrderingRouteArgs> {
   OrderingRoute({
     Key? key,
+    required int zoneId,
     WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
             BuildContext)
         wmFactory = defaultOrderingPageWidgetModelFactory,
@@ -403,6 +404,7 @@ class OrderingRoute extends PageRouteInfo<OrderingRouteArgs> {
           OrderingRoute.name,
           args: OrderingRouteArgs(
             key: key,
+            zoneId: zoneId,
             wmFactory: wmFactory,
           ),
           initialChildren: children,
@@ -417,17 +419,20 @@ class OrderingRoute extends PageRouteInfo<OrderingRouteArgs> {
 class OrderingRouteArgs {
   const OrderingRouteArgs({
     this.key,
+    required this.zoneId,
     this.wmFactory = defaultOrderingPageWidgetModelFactory,
   });
 
   final Key? key;
+
+  final int zoneId;
 
   final WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel> Function(
       BuildContext) wmFactory;
 
   @override
   String toString() {
-    return 'OrderingRouteArgs{key: $key, wmFactory: $wmFactory}';
+    return 'OrderingRouteArgs{key: $key, zoneId: $zoneId, wmFactory: $wmFactory}';
   }
 }
 

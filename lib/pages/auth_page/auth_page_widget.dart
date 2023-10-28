@@ -28,39 +28,45 @@ class AuthPageWidget extends ElementaryWidget<IAuthPageWidgetModel> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32,),
-                child: TextField(
-                  controller: wm.emailController,
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.onBackground,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
+        child: Center(
+          child: SizedBox(
+            width: 600,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32,),
+                    child: TextField(
+                      textAlign: TextAlign.start,
+                      controller: wm.emailController,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: theme.colorScheme.onBackground,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Email',
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              height: 82,
-              child: FilledButton(
-                style: theme.filledButtonTheme.style?.copyWith(
-                    fixedSize:
-                        const MaterialStatePropertyAll(Size.fromHeight(50))),
-                onPressed: wm.onSendCode,
-                child: const Center(
-                  child: Text('Получить код'),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  height: 82,
+                  child: FilledButton(
+                    style: theme.filledButtonTheme.style?.copyWith(
+                        fixedSize:
+                            const MaterialStatePropertyAll(Size.fromHeight(50))),
+                    onPressed: wm.onSendCode,
+                    child: const Center(
+                      child: Text('Получить код'),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

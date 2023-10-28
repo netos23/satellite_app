@@ -8,7 +8,7 @@ part of 'geozone.dart';
 
 _$GeozoneImpl _$$GeozoneImplFromJson(Map<String, dynamic> json) =>
     _$GeozoneImpl(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       name: json['name'] as String,
       wkt: (json['wkt'] as List<dynamic>)
           .map((e) => (e as List<dynamic>)

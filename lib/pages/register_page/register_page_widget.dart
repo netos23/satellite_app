@@ -26,137 +26,144 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
           'Регистрация',
         ),
       ),
-      body: SizedBox(
-        width: 600,
+      body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView(
-            children: [
-              Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      TextField(
-                        controller: wm.firstNameController,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
+          child: SizedBox(
+            width: 600,
+            child: ListView(
+              children: [
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        TextField(
+                          textAlign: TextAlign.start,
+                          controller: wm.firstNameController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Имя',
+                          ),
                         ),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Имя',
+                        const SizedBox(
+                          height: 8,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextField(
-                        controller: wm.secondNameController,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
+                        TextField(
+                          textAlign: TextAlign.start,
+                          controller: wm.secondNameController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Фамилия',
+                          ),
                         ),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Фамилия',
+                        const SizedBox(
+                          height: 8,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextField(
-                        controller: wm.emailController,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
+                        TextField(
+                          textAlign: TextAlign.start,
+                          controller: wm.emailController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Email',
+                          ),
                         ),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Email',
+                        const SizedBox(
+                          height: 8,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextField(
-                        controller: wm.phoneNumber,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
+                        TextField(
+                          textAlign: TextAlign.start,
+                          controller: wm.phoneNumber,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Номер телефона',
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Номер телефона',
+                         const SizedBox(
+                          height: 8,
                         ),
-                      ),
-                       const SizedBox(
-                        height: 8,
-                      ),
-                      TextField(
-                        controller: wm.bitrhdayController,
-                        style: theme.textTheme.bodyMedium?.copyWith(
-                          color: theme.colorScheme.onBackground,
-                          overflow: TextOverflow.ellipsis,
+                        TextField(
+                          textAlign: TextAlign.start,
+                          controller: wm.bitrhdayController,
+                          style: theme.textTheme.bodyMedium?.copyWith(
+                            color: theme.colorScheme.onBackground,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: 'Дата рождения',
+                          ),
                         ),
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: 'Дата рождения',
+                        const SizedBox(
+                          height: 16,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      StreamBuilder<String?>(
-                          stream: wm.genderController.stream,
-                          initialData: '',
-                          builder: (context, genderSnapshot) {
-                            return Row(
-                              children: [
-                                Flexible(
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: _GenderCheckbox.male(
-                                      value: genderSnapshot.data == 'male',
-                                      onChanged: () {
-                                        wm.genderController.add('male');
-                                      },
+                        StreamBuilder<String?>(
+                            stream: wm.genderController.stream,
+                            initialData: '',
+                            builder: (context, genderSnapshot) {
+                              return Row(
+                                children: [
+                                  Flexible(
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: _GenderCheckbox.male(
+                                        value: genderSnapshot.data == 'male',
+                                        onChanged: () {
+                                          wm.genderController.add('male');
+                                        },
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Flexible(
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: _GenderCheckbox.female(
-                                      value: genderSnapshot.data == 'female',
-                                      onChanged: () {
-                                        wm.genderController.add('female');
-                                      },
+                                  Flexible(
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: _GenderCheckbox.female(
+                                        value: genderSnapshot.data == 'female',
+                                        onChanged: () {
+                                          wm.genderController.add('female');
+                                        },
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
-                          }),
-                    ],
+                                ],
+                              );
+                            }),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              //const Spacer(),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                height: 82,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                      fixedSize:
-                          const MaterialStatePropertyAll(Size.fromHeight(50))),
-                  onPressed: wm.onRegister,
-                  child: const Center(child: Text('Получить смс')),
+                //const Spacer(),
+                Container(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  height: 82,
+                  child: FilledButton(
+                    style: theme.filledButtonTheme.style?.copyWith(
+                        fixedSize:
+                            const MaterialStatePropertyAll(Size.fromHeight(50))),
+                    onPressed: wm.onRegister,
+                    child: const Center(child: Text('Получить смс')),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -4,7 +4,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:satellite_app/data/interseptor.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/data/repository/dadata_repository.dart';
-import 'package:satellite_app/data/repository/geozones_repository.dart';
 import 'package:satellite_app/data/repository/satellite_repository.dart';
 import 'package:satellite_app/data/repository/token_ropository.dart';
 import 'package:satellite_app/data/service/auth_service.dart';
@@ -43,7 +42,6 @@ class AppComponents {
       ProfileUseCase(tokenRepository, AuthRepository(authService));
   late final SatelliteRepository satelliteRepository =
       SatelliteRepository(satelliteService);
-  late final GeozonesRepository geozonesRepository = GeozonesRepository(geozonesService);
   late final OrderService orderService = OrderService(dio);
 
   Future<void> init() async {

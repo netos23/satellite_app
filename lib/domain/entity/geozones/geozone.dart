@@ -6,7 +6,7 @@ part 'geozone.g.dart';
 @freezed
 class Geozone with _$Geozone {
     factory Geozone({
-      required int id,
+      int? id,
       required String name,
       required List<List<List<double>>> wkt,
 }) = _Geozone;

@@ -12,10 +12,13 @@ import 'ordering_page_wm.dart';
 /// Main widget for ProfilePage module
 @RoutePage()
 class OrderingPageWidget extends ElementaryWidget<IOrderingPageWidgetModel> {
-  const OrderingPageWidget({
+  const OrderingPageWidget( {
     Key? key,
+    required this.zoneId,
     WidgetModelFactory wmFactory = defaultOrderingPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
+
+  final int zoneId;
 
   @override
   Widget build(IOrderingPageWidgetModel wm) {
