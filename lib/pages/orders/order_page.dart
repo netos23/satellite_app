@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
+import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/internal/app_components.dart';
 import 'package:satellite_app/router/app_router.dart';
 
@@ -148,7 +149,6 @@ class _OrderViewPageWidgetState extends State<OrderViewPageWidget> {
           child: FutureBuilder(
               future: _order,
               builder: (context, snap) {
-
                 final order = snap.data;
 
                 if (order == null) {
@@ -168,7 +168,26 @@ class _OrderViewPageWidgetState extends State<OrderViewPageWidget> {
                   children: [
                     _SettingsCard(
                       order: order,
-                    )
+                    ),
+                    if (DateTime.parse(order.dateEnd)
+                            .compareTo(DateTime.now()) <=
+                        0)
+                      FilledButton(
+                        onPressed: () async {
+                          final url = await AppComponents().orderService.getPay(
+                                PaymentId(
+                                  id: order.id ?? 0,
+                                ),
+                              );
+                          context.router.push(
+                            WebViewerRoute(
+                              title: 'Оплата заказа',
+                              url: url.url,
+                            ),
+                          );
+                        },
+                        child: Text('Оплатить'),
+                      ),
                   ],
                 );
               }),

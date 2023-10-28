@@ -25,3 +25,25 @@ class Profile with _$Profile {
   factory Profile.fromJson(Map<String, dynamic> json) =>
       _$ProfileFromJson(json);
 }
+
+@freezed
+class PaymentId with _$PaymentId {
+  factory PaymentId({
+    required int id,
+  }) = _PaymentId;
+
+  factory PaymentId.fromJson(Map<String, dynamic> json) =>
+      _$PaymentIdFromJson(json);
+}
+
+@freezed
+class PaymetnUrl with _$PaymetnUrl {
+  factory PaymetnUrl({
+    required String url,
+    String? success_url,
+    String? failed_url,
+  }) = _PaymetnUrl;
+
+  factory PaymetnUrl.fromJson(Map<String, dynamic> json) =>
+      _$PaymetnUrlFromJson(json);
+}

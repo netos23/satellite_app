@@ -24,6 +24,12 @@ abstract class IProfilePageWidgetModel extends IWidgetModel
   void linkToTelegram();
 
   BehaviorSubject<Profile?> get profileController;
+
+  void onMyOrder();
+
+  void onMyZone();
+
+  void onAabout();
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -105,7 +111,7 @@ class ProfilePageWidgetModel
   @override
   void onEditProfileTap() {
     onUnauthorisedTap(() {
-      router.push(const OrdersRoute());
+      router.push( EditProfileRoute());
     });
   }
 
@@ -176,4 +182,21 @@ class ProfilePageWidgetModel
 
   @override
   final brandController = TextEditingController();
+
+  @override
+  void onAabout() {
+
+  }
+
+  @override
+  void onMyOrder() {
+    onUnauthorisedTap(() {
+      router.push(const OrdersRoute());
+    });
+  }
+
+  @override
+  void onMyZone() {
+    router.navigate(HomeRoute(children: [MapRoute()]));
+  }
 }

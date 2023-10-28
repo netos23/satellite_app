@@ -6,6 +6,7 @@ import 'package:retrofit/http.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
 import 'package:satellite_app/domain/entity/order/plugin_dto.dart';
 import 'package:satellite_app/domain/entity/order/tarif.dart';
+import 'package:satellite_app/domain/models/profile.dart';
 
 part 'order_service.g.dart';
 
@@ -34,4 +35,7 @@ abstract class OrderService {
 
   @GET('/order/orders/{id}')
   Future<Order> getOrder(@Path('id') int id);
+
+  @POST('/payment/pay/')
+  Future<PaymetnUrl> getPay(@Body() PaymentId id);
 }

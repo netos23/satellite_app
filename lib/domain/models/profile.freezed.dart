@@ -340,3 +340,311 @@ abstract class _Profile implements Profile {
   _$$ProfileImplCopyWith<_$ProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+PaymentId _$PaymentIdFromJson(Map<String, dynamic> json) {
+  return _PaymentId.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymentId {
+  int get id => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymentIdCopyWith<PaymentId> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymentIdCopyWith<$Res> {
+  factory $PaymentIdCopyWith(PaymentId value, $Res Function(PaymentId) then) =
+      _$PaymentIdCopyWithImpl<$Res, PaymentId>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class _$PaymentIdCopyWithImpl<$Res, $Val extends PaymentId>
+    implements $PaymentIdCopyWith<$Res> {
+  _$PaymentIdCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymentIdImplCopyWith<$Res>
+    implements $PaymentIdCopyWith<$Res> {
+  factory _$$PaymentIdImplCopyWith(
+          _$PaymentIdImpl value, $Res Function(_$PaymentIdImpl) then) =
+      __$$PaymentIdImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$PaymentIdImplCopyWithImpl<$Res>
+    extends _$PaymentIdCopyWithImpl<$Res, _$PaymentIdImpl>
+    implements _$$PaymentIdImplCopyWith<$Res> {
+  __$$PaymentIdImplCopyWithImpl(
+      _$PaymentIdImpl _value, $Res Function(_$PaymentIdImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$PaymentIdImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymentIdImpl implements _PaymentId {
+  _$PaymentIdImpl({required this.id});
+
+  factory _$PaymentIdImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymentIdImplFromJson(json);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'PaymentId(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymentIdImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymentIdImplCopyWith<_$PaymentIdImpl> get copyWith =>
+      __$$PaymentIdImplCopyWithImpl<_$PaymentIdImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymentIdImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymentId implements PaymentId {
+  factory _PaymentId({required final int id}) = _$PaymentIdImpl;
+
+  factory _PaymentId.fromJson(Map<String, dynamic> json) =
+      _$PaymentIdImpl.fromJson;
+
+  @override
+  int get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymentIdImplCopyWith<_$PaymentIdImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PaymetnUrl _$PaymetnUrlFromJson(Map<String, dynamic> json) {
+  return _PaymetnUrl.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PaymetnUrl {
+  String get url => throw _privateConstructorUsedError;
+  String? get success_url => throw _privateConstructorUsedError;
+  String? get failed_url => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PaymetnUrlCopyWith<PaymetnUrl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PaymetnUrlCopyWith<$Res> {
+  factory $PaymetnUrlCopyWith(
+          PaymetnUrl value, $Res Function(PaymetnUrl) then) =
+      _$PaymetnUrlCopyWithImpl<$Res, PaymetnUrl>;
+  @useResult
+  $Res call({String url, String? success_url, String? failed_url});
+}
+
+/// @nodoc
+class _$PaymetnUrlCopyWithImpl<$Res, $Val extends PaymetnUrl>
+    implements $PaymetnUrlCopyWith<$Res> {
+  _$PaymetnUrlCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+    Object? success_url = freezed,
+    Object? failed_url = freezed,
+  }) {
+    return _then(_value.copyWith(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      success_url: freezed == success_url
+          ? _value.success_url
+          : success_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      failed_url: freezed == failed_url
+          ? _value.failed_url
+          : failed_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$PaymetnUrlImplCopyWith<$Res>
+    implements $PaymetnUrlCopyWith<$Res> {
+  factory _$$PaymetnUrlImplCopyWith(
+          _$PaymetnUrlImpl value, $Res Function(_$PaymetnUrlImpl) then) =
+      __$$PaymetnUrlImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String url, String? success_url, String? failed_url});
+}
+
+/// @nodoc
+class __$$PaymetnUrlImplCopyWithImpl<$Res>
+    extends _$PaymetnUrlCopyWithImpl<$Res, _$PaymetnUrlImpl>
+    implements _$$PaymetnUrlImplCopyWith<$Res> {
+  __$$PaymetnUrlImplCopyWithImpl(
+      _$PaymetnUrlImpl _value, $Res Function(_$PaymetnUrlImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? url = null,
+    Object? success_url = freezed,
+    Object? failed_url = freezed,
+  }) {
+    return _then(_$PaymetnUrlImpl(
+      url: null == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String,
+      success_url: freezed == success_url
+          ? _value.success_url
+          : success_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      failed_url: freezed == failed_url
+          ? _value.failed_url
+          : failed_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$PaymetnUrlImpl implements _PaymetnUrl {
+  _$PaymetnUrlImpl({required this.url, this.success_url, this.failed_url});
+
+  factory _$PaymetnUrlImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PaymetnUrlImplFromJson(json);
+
+  @override
+  final String url;
+  @override
+  final String? success_url;
+  @override
+  final String? failed_url;
+
+  @override
+  String toString() {
+    return 'PaymetnUrl(url: $url, success_url: $success_url, failed_url: $failed_url)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaymetnUrlImpl &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.success_url, success_url) ||
+                other.success_url == success_url) &&
+            (identical(other.failed_url, failed_url) ||
+                other.failed_url == failed_url));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, url, success_url, failed_url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaymetnUrlImplCopyWith<_$PaymetnUrlImpl> get copyWith =>
+      __$$PaymetnUrlImplCopyWithImpl<_$PaymetnUrlImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$PaymetnUrlImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PaymetnUrl implements PaymetnUrl {
+  factory _PaymetnUrl(
+      {required final String url,
+      final String? success_url,
+      final String? failed_url}) = _$PaymetnUrlImpl;
+
+  factory _PaymetnUrl.fromJson(Map<String, dynamic> json) =
+      _$PaymetnUrlImpl.fromJson;
+
+  @override
+  String get url;
+  @override
+  String? get success_url;
+  @override
+  String? get failed_url;
+  @override
+  @JsonKey(ignore: true)
+  _$$PaymetnUrlImplCopyWith<_$PaymetnUrlImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

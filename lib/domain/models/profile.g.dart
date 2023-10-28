@@ -40,3 +40,27 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
   writeNotNull('tg_chat_start_link', instance.tgChatStartLink);
   return val;
 }
+
+_$PaymentIdImpl _$$PaymentIdImplFromJson(Map<String, dynamic> json) =>
+    _$PaymentIdImpl(
+      id: json['id'] as int,
+    );
+
+Map<String, dynamic> _$$PaymentIdImplToJson(_$PaymentIdImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+    };
+
+_$PaymetnUrlImpl _$$PaymetnUrlImplFromJson(Map<String, dynamic> json) =>
+    _$PaymetnUrlImpl(
+      url: json['url'] as String,
+      success_url: json['success_url'] as String?,
+      failed_url: json['failed_url'] as String?,
+    );
+
+Map<String, dynamic> _$$PaymetnUrlImplToJson(_$PaymetnUrlImpl instance) =>
+    <String, dynamic>{
+      'url': instance.url,
+      'success_url': instance.success_url,
+      'failed_url': instance.failed_url,
+    };

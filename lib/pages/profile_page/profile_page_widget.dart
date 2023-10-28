@@ -57,17 +57,17 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                                       icon: Icons.person),
                                   const Divider(),
                                   MenuItem(
-                                      onTap: wm.onEditProfileTap,
+                                      onTap: wm.onMyOrder,
                                       title: 'Мои заказы',
                                       icon: Icons.shopping_cart),
                                   const Divider(),
                                   MenuItem(
-                                      onTap: wm.onEditProfileTap,
+                                      onTap: wm.onMyZone,
                                       title: 'Мои зоны',
                                       icon: Icons.map),
                                   const Divider(),
                                   MenuItem(
-                                    onTap: wm.onEditProfileTap,
+                                    onTap: wm.onAabout,
                                     title: 'O нас',
                                     icon: Icons.settings_outlined,
                                   ),
