@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:satellite_app/domain/entity/order/tarif.dart';
 import 'package:satellite_app/domain/models/plugin.dart';
 import 'package:satellite_app/domain/models/satellite.dart';
@@ -111,25 +112,58 @@ class _SettingsCard extends StatelessWidget {
         child: Column(
           children: [
             const Text('Настройки съемки:'),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              child: const Row(
-                children: [
-                  Text('Дата начала'),
-                  Spacer(),
-                  Icon(Icons.settings_outlined),
-                ],
-              ),
+            StreamBuilder<DateTime>(
+              stream: model.startDate,
+              builder: (context, snapshot) {
+                final startdate = snapshot.hasData ? snapshot.data : DateTime.now();
+                return StreamBuilder<DateTime>(
+                    stream: model.secondDate,
+                    builder: (context, snapshot) {
+                    return GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      onTap: () async {
+                        final newDate = await showDateDialog(context, startdate!);
+                        if (newDate != null) {
+                          model.startDate.add(newDate);
+                        }
+                      },
+                      child: Row(
+                        children: [
+                          const Text('Дата начала'),
+                          const Spacer(),
+                          Text(DateFormat('yyyy-MM-dd').format(startdate!),),
+                          const SizedBox(width: 8,),
+                          const Icon(Icons.settings_outlined),
+                        ],
+                      ),
+                    );
+                  }
+                );
+              }
             ),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              child: const Row(
-                children: [
-                  Text('Дата окончания:'),
-                  Spacer(),
-                  Icon(Icons.settings_outlined),
-                ],
-              ),
+            StreamBuilder<DateTime>(
+              stream: model.secondDate,
+              builder: (context, snapshot) {
+                final startdate = snapshot.hasData ? snapshot.data : DateTime.now();
+                final endDate = snapshot.hasData ? snapshot.data : startdate;
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () async {
+                    final newDate = await showDateDialog(context, endDate, startdate);
+                    if (newDate != null) {
+                      model.secondDate.add(newDate);
+                    }                  },
+                  child: Row(
+                    children: [
+                      const Text('Дата окончания:'),
+                      const Spacer(),
+                      Text(DateFormat('yyyy-MM-dd').format(endDate!),),
+                      const SizedBox(width: 8,),
+                      const Icon(Icons.settings_outlined),
+                    ],
+                  ),
+                );
+              }
             ),
             const Text('Количество мегапикселей:'),
             StreamBuilder<RangeValues>(
@@ -167,6 +201,15 @@ class _SettingsCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Future<DateTime?> showDateDialog(BuildContext context, DateTime value, [DateTime? initial]) async {
+    return await showDatePicker(
+      context: context,
+      initialDate: value,
+      firstDate: initial ?? DateTime.now(),
+      lastDate: DateTime(2025),
     );
   }
 }

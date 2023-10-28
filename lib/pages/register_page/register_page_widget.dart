@@ -36,7 +36,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                 child: Column(
                   children: [
                     TextField(
-                      textAlign: TextAlign.center,
                       controller: wm.firstNameController,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onBackground,
@@ -51,7 +50,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                       height: 8,
                     ),
                     TextField(
-                      textAlign: TextAlign.center,
                       controller: wm.secondNameController,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onBackground,
@@ -66,7 +64,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                       height: 8,
                     ),
                     TextField(
-                      textAlign: TextAlign.center,
                       controller: wm.emailController,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onBackground,
@@ -81,7 +78,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                       height: 8,
                     ),
                     TextField(
-                      textAlign: TextAlign.center,
                       controller: wm.phoneNumber,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onBackground,
@@ -97,7 +93,6 @@ class RegisterPageWidget extends ElementaryWidget<IRegisterPageWidgetModel> {
                       height: 8,
                     ),
                     TextField(
-                      textAlign: TextAlign.center,
                       controller: wm.bitrhdayController,
                       style: theme.textTheme.bodyMedium?.copyWith(
                         color: theme.colorScheme.onBackground,

@@ -1,5 +1,6 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:satellite_app/data/repository/auth_repository.dart';
 import 'package:satellite_app/data/repository/geozones_repository.dart';
@@ -13,6 +14,7 @@ import 'package:satellite_app/domain/models/profile.dart';
 import 'package:satellite_app/domain/models/satellite.dart';
 import 'package:satellite_app/domain/use_case/profile_use_case.dart';
 import 'package:satellite_app/internal/app_components.dart';
+import 'package:satellite_app/util/snack_bar_util.dart';
 import 'package:satellite_app/util/wm_extensions.dart';
 
 import 'ordering_page_model.dart';
@@ -52,6 +54,10 @@ abstract class IOrderingPageWidgetModel extends IWidgetModel
 
   BehaviorSubject<int> get selectedTarifController;
 
+  BehaviorSubject<DateTime> get startDate;
+
+  BehaviorSubject<DateTime> get secondDate;
+
   BehaviorSubject<RangeValues> get rangeValuesController;
 
   void selectSatellite(Satellite value);
@@ -87,6 +93,10 @@ class OrderingPageWidgetModel
 
   @override
   final profileController = BehaviorSubject();
+  @override
+  final startDate = BehaviorSubject();
+  @override
+  final secondDate = BehaviorSubject();
 
   @override
   final geozonesController = BehaviorSubject();
@@ -171,6 +181,8 @@ class OrderingPageWidgetModel
     selectedTarifController.close();
     pluginController.close();
     tarifsController.close();
+    startDate.close();
+    secondDate.close();
     super.dispose();
   }
 
@@ -284,23 +296,31 @@ class OrderingPageWidgetModel
   );
 
   @override
-  void orderCreate() {
+  Future<void> orderCreate() async  {
     final profile = profileController.valueOrNull;
     final tarif = selectedTarifController.valueOrNull;
+    final start = startDate.valueOrNull;
+    final end = startDate.valueOrNull;
     List<Satellite> checkedSatellited = satelliteController.valueOrNull ?? [];
     checkedSatellited =
         checkedSatellited.where((element) => element.isSelected).toList();
     if (profile != null && tarif != null && checkedSatellited.isNotEmpty) {
-      orderService.postOrder(
-        request: Order(
-          dateBegin: '',
-          dateEnd: '',
-          satellites: checkedSatellited.map((e) => e.id).toList(),
-          //TODO addIdZone
-          geozone: 0,
-          tarif: tarif,
-        ),
-      );
+      try {
+        await orderService.postOrder(
+          request: Order(
+            dateBegin: start != null ? DateFormat('yyyy-MM-dd').format(start) : '',
+            dateEnd: end != null ? DateFormat('yyyy-MM-dd').format(end) : '',
+            satellites: checkedSatellited.map((e) => e.id).toList(),
+            //TODO addIdZone
+            geozone: 0,
+            tarif: tarif,
+          ),
+        );
+        router.pop();
+        context.showSnackBar('Заказ оформлен!');
+      }
+      catch (_){
+      }
     }
   }
 
