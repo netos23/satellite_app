@@ -311,7 +311,6 @@ class OrderingPageWidgetModel
         );
         router.pop();
         context.showSnackBar('Заказ оформлен!');
-        router.push(const OrdersRoute());
       } catch (_) {}
     }
   }
