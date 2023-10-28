@@ -105,7 +105,7 @@ class ProfilePageWidgetModel
   @override
   void onEditProfileTap() {
     onUnauthorisedTap(() {
-      router.push(EditProfileRoute(profile: profileUseCase.profile.value));
+      router.push(const OrdersRoute());
     });
   }
 

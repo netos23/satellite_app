@@ -93,7 +93,32 @@ class _OrderService implements OrderService {
   }
 
   @override
-  Future<Order> getOrders() async {
+  Future<List<Order>> getOrders() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Order>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/order/orders',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Order.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<Order> getOrder(int id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -106,7 +131,7 @@ class _OrderService implements OrderService {
     )
             .compose(
               _dio.options,
-              '/order/orders',
+              '/order/orders/${id}',
               queryParameters: queryParameters,
               data: _data,
             )

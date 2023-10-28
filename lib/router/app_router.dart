@@ -63,6 +63,12 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: EditProfileRoute.page,
                 ),
+                AutoRoute(
+                  page: OrderViewRoute.page,
+                ),
+                AutoRoute(
+                  page: OrdersRoute.page,
+                ),
               ],
             ),
             AutoRoute(

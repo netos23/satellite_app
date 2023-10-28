@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
+import 'package:retrofit/http.dart';
 import 'package:satellite_app/domain/entity/order/order.dart';
 import 'package:satellite_app/domain/entity/order/plugin_dto.dart';
 import 'package:satellite_app/domain/entity/order/tarif.dart';
-import 'package:retrofit/http.dart';
 
 part 'order_service.g.dart';
 
@@ -24,5 +24,8 @@ abstract class OrderService {
   Future<List<PluginDto>> getPlugins();
 
   @GET('/order/orders')
-  Future<Order> getOrders();
+  Future<List<Order>> getOrders();
+
+  @GET('/order/orders/{id}')
+  Future<Order> getOrder(@Path('id') int id);
 }
