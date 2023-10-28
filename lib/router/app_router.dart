@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:satellite_app/domain/entity/order/order.dart';
 import 'package:satellite_app/pages/auth_code_page/auth_code_page_widget.dart';
 import 'package:satellite_app/pages/auth_code_page/auth_code_page_wm.dart';
 import 'package:satellite_app/pages/auth_page/auth_page_widget.dart';
@@ -19,6 +20,7 @@ import 'package:satellite_app/pages/register_page/register_page_widget.dart';
 import 'package:satellite_app/pages/register_page/register_page_wm.dart';
 import 'package:satellite_app/pages/show_case_page/show_case_page_wm.dart';
 import 'package:satellite_app/pages/web_view/web_view_page.dart';
+import 'package:satellite_app/pages/orders/order_page.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../domain/models/profile.dart';

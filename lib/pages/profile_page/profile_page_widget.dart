@@ -47,37 +47,38 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                   child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 800),
                       child: isLogin
-                          ? Column(
-                              children: [
-                                MenuItem(
+                          ? SizedBox(
+                              width: 600,
+                              child: Column(
+                                children: [
+                                  MenuItem(
+                                      onTap: wm.onEditProfileTap,
+                                      title: 'Мои данные',
+                                      icon: Icons.person),
+                                  const Divider(),
+                                  MenuItem(
+                                      onTap: wm.onEditProfileTap,
+                                      title: 'Мои заказы',
+                                      icon: Icons.shopping_cart),
+                                  const Divider(),
+                                  MenuItem(
+                                      onTap: wm.onEditProfileTap,
+                                      title: 'Мои зоны',
+                                      icon: Icons.map),
+                                  const Divider(),
+                                  MenuItem(
                                     onTap: wm.onEditProfileTap,
-                                    title: 'Мои данные',
-                                    icon: Icons.person),
-                                const Divider(),
-                                MenuItem(
-                                    onTap: wm.onEditProfileTap,
-                                    title: 'Мои заказы',
-                                    icon: Icons.shopping_cart),
-                                const Divider(),
-                                MenuItem(
-                                    onTap: wm.onEditProfileTap,
-                                    title: 'Мои зоны',
-                                    icon: Icons.map),
-                                const Divider(),
-                                MenuItem(
-                                  onTap: wm.onEditProfileTap,
-                                  title: 'O нас',
-                                  icon: Icons.settings_outlined,
-                                ),
-                                const Divider(),
-                                const Spacer(),
-                                Image.asset(
-                                  'assets/images/logo_large.png',
-                                  width: width,
-                                  height: width,
-                                ),
-                                const Spacer(),
-                              ],
+                                    title: 'O нас',
+                                    icon: Icons.settings_outlined,
+                                  ),
+                                  const Divider(),
+                                  Flexible(
+                                    child: Image.asset(
+                                      'assets/images/logo_large.png',
+                                    ),
+                                  ),
+                                ],
+                              ),
                             )
                           : Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -96,7 +97,9 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
                                   child: Text(
                                     'Что бы сталкерить\n на полную катушку,\n зарегистрируйтесь или\n войдите в аккаунт :) ',
                                     style: theme.textTheme.bodyMedium?.copyWith(
-                                      color: Theme.of(context).colorScheme.onBackground,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
@@ -172,15 +175,12 @@ class MenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 42,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        leading: Icon(icon),
+        title: Text(title),
         onTap: onTap,
-        child: Row(children: [
-          Padding(padding: const EdgeInsets.only(right: 6), child: Icon(icon)),
-          Text(title),
-          const Spacer(),
-          const Icon(Icons.navigate_next),
-        ]),
+        trailing: const Icon(Icons.navigate_next),
       ),
     );
   }

@@ -23,4 +23,6 @@ abstract class OrderService {
   @GET('/order/plugins/')
   Future<List<PluginDto>> getPlugins();
 
+  @GET('/order/orders')
+  Future<Order> getOrders();
 }

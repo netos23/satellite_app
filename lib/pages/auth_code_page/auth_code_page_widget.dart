@@ -52,40 +52,42 @@ class AuthCodePageWidget extends ElementaryWidget<IAuthCodePageWidgetModel> {
          'Вход',
         ),
       ),
-      body: SizedBox(
-        width: 600,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Pinput(
-                  controller: wm.codeController,
-                  length: 4,
-                  // separator: const SizedBox(
-                  //   width: 23,
-                  // ),
-                  autofillHints: const [AutofillHints.oneTimeCode],
-                  cursor: cursor,
-                  preFilledWidget: preFilledWidget,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
-              SizedBox(
-                height: 50,
-                child: FilledButton(
-                  style: theme.filledButtonTheme.style?.copyWith(
-                      fixedSize:
-                          const MaterialStatePropertyAll(Size.fromHeight(50))),
-                  onPressed: () {
-                    wm.confirmCode();
-                    router.popUntilRoot();
-                  },
-                  child: const Center(
-                    child: Text('Подтвердить'),
+      body: Center(
+        child: SizedBox(
+          width: 600,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Pinput(
+                    controller: wm.codeController,
+                    length: 4,
+                    // separator: const SizedBox(
+                    //   width: 23,
+                    // ),
+                    autofillHints: const [AutofillHints.oneTimeCode],
+                    cursor: cursor,
+                    preFilledWidget: preFilledWidget,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly]),
+                SizedBox(
+                  height: 50,
+                  child: FilledButton(
+                    style: theme.filledButtonTheme.style?.copyWith(
+                        fixedSize:
+                            const MaterialStatePropertyAll(Size.fromHeight(50))),
+                    onPressed: () {
+                      wm.confirmCode();
+                      router.popUntilRoot();
+                    },
+                    child: const Center(
+                      child: Text('Подтвердить'),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
