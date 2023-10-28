@@ -23,6 +23,6 @@ abstract class GeozonesService {
 
   @POST('/geozones/zones/')
   Future<List<Geozone>> postZones({
-    @Body() required List<Geozone> request,
+    @Body() required Geozone request,
   });
 }
